@@ -22,8 +22,12 @@ function Signup() {
       firstRender.current = false;
       return;
     }
-    emailFormValidation();
-    passwordFormValidation();
+    if (email) {
+      emailFormValidation();
+    }
+    if (password) {
+      passwordFormValidation();
+    }
   }, [email, password]);
 
   const emailFormValidation = () => {
@@ -34,7 +38,7 @@ function Signup() {
     } else if (!emailRegex.test(email)) {
       setEmailError("Enter a valid email address.");
     } else {
-      setEmailError(null);
+      setEmailError("");
     }
   };
 
