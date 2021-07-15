@@ -4,10 +4,7 @@ const app = require("./app");
 
 dotenv.config({ path: "./config/config.env" });
 
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+const DB = process.env.DATABASE;
 
 mongoose
   .connect(DB, {
@@ -17,7 +14,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log(`Connected to MongoDB: ${process.env.DATABASE} successfully`);
+    console.log(`Connected to MongoDB successfully`);
   });
 
 //  port declarations
