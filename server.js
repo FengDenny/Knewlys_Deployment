@@ -7,11 +7,14 @@ dotenv.config({ path: "./config/config.env" });
 const DB = `${process.env.DATABASE}`;
 
 mongoose
-  .connect(DB, {
-    useNewUrlParser: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    `mongodb+srv://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_NAME}.ztfqz.mongodb.net/${DATABASE_NAME}`,
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log(`Connected to MongoDB successfully`);
   });
