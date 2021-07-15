@@ -35,9 +35,8 @@ function SignUpForm({
           name='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
-        {emailError && (
+        {email && emailError && (
           <FormParagraph
             theme={{
               headerMain: "var(--error-color)",
@@ -55,10 +54,9 @@ function SignUpForm({
           name='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
           pattern='(?=.*\d).{8,}'
         />
-        {passwordError && (
+        {password && passwordError && (
           <FormParagraph
             theme={{
               headerMain: "var(--error-color)",
