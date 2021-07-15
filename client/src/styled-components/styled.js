@@ -48,7 +48,10 @@ export const Video = styled(VideoContainer)`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
-export const FullVideo = styled.video``;
+export const FullVideo = styled.video`
+  width: 100vw;
+  height: 100%;
+`;
 export const Source = styled.source``;
 export const SmoothScrollLink = styled.a`
   color: var(--white-color);
