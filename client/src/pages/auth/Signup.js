@@ -9,8 +9,10 @@ import { ThemeProvider } from "styled-components";
 import axios from "axios";
 
 function Signup() {
-  const [email, setEmail] = useState("Dfeng6@mail.ccsf.edu");
-  const [password, setPassword] = useState("123456aA!");
+  // Dfeng6@mail.ccsf.edu
+  const [email, setEmail] = useState("");
+  // 123456aA!
+  const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
   const firstRender = useRef(true);

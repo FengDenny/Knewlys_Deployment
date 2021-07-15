@@ -12,8 +12,8 @@ import { useDispatch } from "react-redux";
 import { setUserLoggedIn } from "../../redux/actions/authAction";
 
 function Signin() {
-  const [email, setEmail] = useState("Dfeng6@mail.ccsf.edu");
-  const [password, setPassword] = useState("123456aA!");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const history = useHistory();
