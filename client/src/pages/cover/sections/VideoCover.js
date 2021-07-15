@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import throwingFlower from "../../../images/video_cover/throwingFlowers.mp4";
+import weddingCeremony from "../../../images/video_cover/fan_wedding.mp4";
 import { smoothScrolling } from "../../../components/js/smoothScrolling";
 import {
   VideoContainer,
@@ -91,7 +92,7 @@ function VideoCover() {
       <VideoContainer>
         <Video>
           <FullVideo autoPlay='autoplay' loop='loop' muted>
-            <Source src={throwingFlower} type='video/mp4' />
+            <Source src={weddingCeremony} type='video/mp4' />
           </FullVideo>
         </Video>
         <VideoSection>
