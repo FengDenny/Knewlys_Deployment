@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.activate {
+  background-color: #4a5961;
+}
+
+.activate .button {
+  border: 1px solid #00c04d;
+  border-radius: 5px;
+  background: #00c04d;
+  cursor: pointer;
+  color: #fff;
+  width: 505px;
+  height: 40px;
+  text-transform: uppercase;
+  position: relative;
+  top: 20px;
+}
+
+.activate .button:hover {
+  border: 1px solid #02963d;
+  background: #02963d;
+}
+
+.activate .paragraph {
+  color: #fff;
+  position: relative;
+  top: 5px;
+}
