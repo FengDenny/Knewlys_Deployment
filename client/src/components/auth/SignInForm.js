@@ -16,7 +16,15 @@ import {
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 
-function SignInForm({ handleSubmit, email, setEmail, password, setPassword }) {
+function SignInForm({
+  handleSubmit,
+  email,
+  setEmail,
+  emailError,
+  password,
+  setPassword,
+  passwordError,
+}) {
   const { switchToSignup, switchToForgotPassword } = useContext(AccountContext);
   return (
     <FormContainer onSubmit={handleSubmit}>
@@ -29,6 +37,16 @@ function SignInForm({ handleSubmit, email, setEmail, password, setPassword }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {email && emailError && (
+            <FormParagraph
+              theme={{
+                headerMain: "var(--error-color)",
+                fontSizeXSmall: "var(--error-font-size)",
+              }}
+            >
+              {emailError}
+            </FormParagraph>
+          )}
         </FormGroup>
         <FormGroup>
           <GridTwo>
@@ -43,6 +61,16 @@ function SignInForm({ handleSubmit, email, setEmail, password, setPassword }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {password && passwordError && (
+            <FormParagraph
+              theme={{
+                headerMain: "var(--error-color)",
+                fontSizeXSmall: "var(--error-font-size)",
+              }}
+            >
+              {passwordError}
+            </FormParagraph>
+          )}
         </FormGroup>
         <FormGroup>
           <FormParagraph
