@@ -4,17 +4,14 @@ const app = require("./app");
 
 dotenv.config({ path: "./config/config.env" });
 
-const DB = `${process.env.DATABASE}`;
+const DB = `mongodb+srv://DFeng:${process.env.DATABASE_PASSWORD}@knewlys.ztfqz.mongodb.net/knewlys`;
 
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_NAME}.ztfqz.mongodb.net/${process.env.DATABASE_NAME}`,
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log(`Connected to MongoDB successfully`);
   });
