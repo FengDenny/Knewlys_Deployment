@@ -4,7 +4,7 @@ const app = require("./app");
 
 dotenv.config({ path: "./config/config.env" });
 
-const DB = process.env.DATABASE;
+const DB = `${process.env.DATABASE}`;
 
 mongoose
   .connect(DB, {
