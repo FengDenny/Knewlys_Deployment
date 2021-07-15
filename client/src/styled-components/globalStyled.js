@@ -288,15 +288,6 @@ export const WeddingSectionImage = styled(VowSectionImage)``;
 export const FormContainer = styled.form`
   max-width: 1400px;
 `;
-export const FormParagraph = styled.p`
-  font-size: ${(props) => props.theme.fontSizeXSmall};
-  color: ${(props) => props.theme.headerMain};
-  padding: 21px 0 0 0;
-  position: relative;
-  left: 5px;
-  width: 328px;
-  line-height: 20px;
-`;
 
 export const FormGroup = styled.div`
   position: relative;
@@ -322,13 +313,22 @@ export const FormInput = styled.input`
   padding: 10px;
   top: 3px;
 
-  :invalid {
+  &:invalid {
     border: 2px solid red;
   }
+  // &:valid {
+  //   border: 2px solid green;
+  // }
+`;
 
-  :valid {
-    border: 2px solid green;
-  }
+export const FormParagraph = styled.p`
+  font-size: ${(props) => props.theme.fontSizeXSmall};
+  color: ${(props) => props.theme.headerMain};
+  padding: 21px 0 0 0;
+  position: relative;
+  left: 5px;
+  width: 328px;
+  line-height: 20px;
 `;
 
 export const ForgotPasswordLink = styled.a`
