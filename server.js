@@ -8,7 +8,7 @@ const DB = `${process.env.DATABASE}`;
 
 mongoose
   .connect(
-    `mongodb+srv://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_NAME}.ztfqz.mongodb.net/${DATABASE_NAME}`,
+    `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_NAME}.ztfqz.mongodb.net/${process.env.DATABASE_NAME}`,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
