@@ -52,7 +52,11 @@ export const VideoContainer = styled.div`
   }
 
   ${MediaQueries("laptop")`
-    height:64vh;
+    height:42vh;
+  `}
+
+  ${MediaQueries("mobileL")`
+    height:31vh;
   `}
 `;
 export const Video = styled(VideoContainer)`
@@ -90,6 +94,10 @@ export const VideoSection = styled.div`
   flex-direction: column;
   height: 100%;
   width: 478px;
+
+  ${MediaQueries("mobileL")`
+  width: 286px;
+`}
 `;
 export const StyledModal = Modal.styled`
 
