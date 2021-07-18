@@ -81,6 +81,26 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   height: 30vh;
   width:46%;
   `}
+
+  ${MediaQueries("mobileL")`
+  height:15vh;
+  width:78%;
+  `}
+`;
+
+export const MediaFlexDisplay = styled(MiddleFlexDisplayed)`
+  ${MediaQueries("tablet")`
+  width: 57%;
+`}
+  ${MediaQueries("mobileL")`
+width:96%;
+`}
+`;
+
+export const GalleryFlexDisplay = styled(MiddleFlexDisplayed)`
+  ${MediaQueries("mobileL")`
+height:40vh;
+`}
 `;
 
 export const MiddleFlexHeight = styled(MiddleFlexDisplayed)`
@@ -101,6 +121,10 @@ export const Header = styled(motion.h5)`
 
   ${MediaQueries("laptop")`
   font-size: var(--font-size-lg);
+
+  `}
+  ${MediaQueries("tablet")`
+  font-size: var(--font-size-24);
 
   `}
 `;
@@ -146,6 +170,10 @@ export const ParagraphWidth = styled(Paragraph)`
   width: ${(props) => props.theme.paragraphWidth};
   line-height: ${(props) => props.theme.lineHeight};
   margin-left: ${(props) => props.theme.marginLeft};
+
+  ${MediaQueries("mobileL")`
+  width:359px;
+  `}
 `;
 
 export const ParagraphSpan = styled.span`
@@ -249,6 +277,13 @@ export const VowsSection = styled(motion.section)`
   ${MediaQueries("laptop")`
   margin-top: 808px;
   `}
+  ${MediaQueries("tablet")`
+  margin-top: 500px
+  `}
+ 
+  ${MediaQueries("mobileL")`
+  margin-top: 250px
+  `}
 `;
 export const VowsSectionGrid = styled(GridTwo)`
   grid-template-rows: 500px;
@@ -258,6 +293,10 @@ export const VowsSectionGrid = styled(GridTwo)`
 
 export const VowSectionSpan = styled.span`
   font-size: var(--font-size-xlg);
+
+  ${MediaQueries("tablet")`
+  font-size: 40px;
+  `}
 `;
 
 export const VowSectionImage = styled.img`
@@ -269,6 +308,10 @@ export const VowSectionImage = styled.img`
   display: flex;
     justify-content: center;
     align-self: center;
+  `}
+
+  ${MediaQueries("mobileL")`
+  width:  358px;
   `}
 `;
 
@@ -300,12 +343,21 @@ export const GalleryBG = styled(motion.div)`
   ${MediaQueries("laptop")`
   height:87vh;
 `}
+
+  ${MediaQueries("mobileL")`
+  height:100vh;
+`}
 `;
+
 export const GallerySectionGrid = styled(VowsSectionGrid)`
   grid-template-rows: 600px;
 
   ${MediaQueries("laptop")`
   grid-template-rows: 350px;
+`}
+
+  ${MediaQueries("mobileL")`
+  grid-template-rows: 250px;
 `}
 `;
 export const GallerySectionImage = styled(VowSectionImage)`
@@ -313,6 +365,10 @@ export const GallerySectionImage = styled(VowSectionImage)`
   ${MediaQueries("laptop")`
   top:30px;
   left:0;
+  `}
+  ${MediaQueries("mobileL")`
+  width:352px;
+  margin-right:41px;
   `}
 `;
 
@@ -327,7 +383,15 @@ export const WeddingLocationGrid = styled(VowsSectionGrid)`
   `}
 `;
 
-export const WeddingSectionImage = styled(VowSectionImage)``;
+export const WeddingSectionImage = styled(VowSectionImage)`
+  ${MediaQueries("laptop")`
+width:450px;
+`}
+  ${MediaQueries("mobileL")`
+width:352px;
+margin-right:50px;
+`}
+`;
 
 //Form
 export const FormContainer = styled.form`
@@ -566,4 +630,7 @@ export const Bounce = styled.div`
   animation: ${bounce} 2s infinite;
   position: fixed;
   bottom: 15px;
+  ${MediaQueries("tablet")`
+    display:none;
+  `}
 `;
