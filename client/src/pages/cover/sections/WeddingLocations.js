@@ -10,6 +10,7 @@ import {
   ParagraphWidth,
   WeddingSectionImage,
   WeddingMotion,
+  MediaFlexDisplay,
 } from "../../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 import { useAnimation } from "framer-motion";
@@ -43,7 +44,7 @@ function WeddingLocations() {
               >
                 <WeddingSectionImage src={locationMap} alt='wedding' />
               </MiddleFlexDisplayed>
-              <MiddleFlexDisplayed
+              <MediaFlexDisplay
                 theme={{ width50: "95%", height100: "50vh" }}
                 variants={fadeUpVariants}
               >
@@ -69,7 +70,7 @@ function WeddingLocations() {
                   Knewlys got you covered! Take a look at other people galleries
                   to see their venue location!
                 </ParagraphWidth>
-              </MiddleFlexDisplayed>
+              </MediaFlexDisplay>
             </WeddingLocationGrid>{" "}
           </WeddingMotion>
         </Container>

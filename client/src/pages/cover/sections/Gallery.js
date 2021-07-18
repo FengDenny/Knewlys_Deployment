@@ -10,6 +10,8 @@ import {
   ParagraphWidth,
   GallerySectionImage,
   GalleryBG,
+  MediaFlexDisplay,
+  GalleryFlexDisplay,
 } from "../../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 import { useAnimation } from "framer-motion";
@@ -39,7 +41,7 @@ function Gallery() {
         <Container>
           <ThemeProvider theme={theme}>
             <GallerySectionGrid>
-              <MiddleFlexDisplayed
+              <MediaFlexDisplay
                 theme={{ width50: "95%", height100: "50vh" }}
                 variants={leftVariants}
               >
@@ -65,14 +67,13 @@ function Gallery() {
                   memories to never forget the perfect past, including your
                   vows.
                 </ParagraphWidth>
-              </MiddleFlexDisplayed>
-
-              <MiddleFlexDisplayed
+              </MediaFlexDisplay>
+              <GalleryFlexDisplay
                 theme={{ width50: "95%", height100: "50vh" }}
                 variants={rightVariants}
               >
                 <GallerySectionImage src={gallery} alt='gallery' />
-              </MiddleFlexDisplayed>
+              </GalleryFlexDisplay>
             </GallerySectionGrid>
           </ThemeProvider>
         </Container>
