@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import Modal, { BaseModalBackground } from "styled-react-modal";
 
+// media queries
+
+const size = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
+
+export const MediaQueries = (key) => {
+  return (style) => `@media (max-width: ${size[key]}){${style}}`;
+};
+
 // App.js Styled
 export const AppWrapper = styled.div`
   display: flex;
@@ -19,7 +35,7 @@ export const VideoContainer = styled.div`
   top: 0;
   width: 100vw;
   // create a curve border for video
-  height: 95vh;
+  height: 76vh;
   overflow: hidden;
   /* (first radius values) / top-left | top-right | bottom-right | bottom-left */
   border-radius: 50% 50%/ 0 0 20% 20%;
@@ -34,6 +50,10 @@ export const VideoContainer = styled.div`
     height: 100%;
     background-color: var(--content-overlay);
   }
+
+  ${MediaQueries("laptop")`
+    height:64vh;
+  `}
 `;
 export const Video = styled(VideoContainer)`
   /* Make video to at least 100% wide and tall */
