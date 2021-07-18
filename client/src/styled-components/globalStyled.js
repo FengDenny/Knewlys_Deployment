@@ -85,6 +85,10 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   ${MediaQueries("mobileL")`
   height:15vh;
   width:78%;
+  `}  
+  ${MediaQueries("mobileM")`
+  height:21vh;
+  width:78%;
   `}
 `;
 
@@ -125,7 +129,10 @@ export const Header = styled(motion.h5)`
   `}
   ${MediaQueries("tablet")`
   font-size: var(--font-size-24);
-
+  `}
+  
+  ${MediaQueries("mobileM")`
+  font-size: var(--font-size);
   `}
 `;
 
@@ -173,6 +180,9 @@ export const ParagraphWidth = styled(Paragraph)`
 
   ${MediaQueries("mobileL")`
   width:359px;
+  `}
+  ${MediaQueries("mobileM")`
+  width:326px;
   `}
 `;
 
@@ -289,6 +299,9 @@ export const VowsSectionGrid = styled(GridTwo)`
   grid-template-rows: 500px;
   overflow: hidden;
   padding: 0px;
+  ${MediaQueries("mobileM")`
+  grid-template-rows: 535px;
+  `}
 `;
 
 export const VowSectionSpan = styled.span`
@@ -312,6 +325,9 @@ export const VowSectionImage = styled.img`
 
   ${MediaQueries("mobileL")`
   width:  358px;
+  `} 
+  ${MediaQueries("mobileM")`
+  width:  323px;
   `}
 `;
 
@@ -346,6 +362,7 @@ export const GalleryBG = styled(motion.div)`
 
   ${MediaQueries("mobileL")`
   height:100vh;
+  &::before{border-radius: 0 0 45% 45%/0 0 72% 72%;}
 `}
 `;
 
@@ -369,6 +386,9 @@ export const GallerySectionImage = styled(VowSectionImage)`
   ${MediaQueries("mobileL")`
   width:352px;
   margin-right:41px;
+  `} 
+  ${MediaQueries("mobileM")`
+  width:317px;
   `}
 `;
 
@@ -390,6 +410,9 @@ width:450px;
   ${MediaQueries("mobileL")`
 width:352px;
 margin-right:50px;
+`} 
+${MediaQueries("mobileM")`
+width:317px;
 `}
 `;
 
