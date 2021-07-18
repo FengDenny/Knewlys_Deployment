@@ -67,9 +67,12 @@ export const VideoContainer = styled.div`
   ${MediaQueries("mobileL")`
     height:31vh;
   `}
-   ${MediaQueries("mobileM") &&
-  MediaHeight("mobileL")`
+   ${MediaQueries("mobileM")`
     height:26vh;
+  `} 
+  
+  ${MediaHeight("mobileL")`
+    height:20vh;
   `}
   ${MediaHeight("mobileM")`
     height:32vh;
