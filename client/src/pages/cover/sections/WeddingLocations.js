@@ -39,13 +39,13 @@ function WeddingLocations() {
             <WeddingLocationGrid>
               <MiddleFlexDisplayed
                 theme={{ width50: "95%", height100: "50vh" }}
-                variants={fadeUpVariants}
+                variants={fadeDownVariants}
               >
                 <WeddingSectionImage src={locationMap} alt='wedding' />
               </MiddleFlexDisplayed>
               <MiddleFlexDisplayed
                 theme={{ width50: "95%", height100: "50vh" }}
-                variants={fadeDownVariants}
+                variants={fadeUpVariants}
               >
                 <Header
                   theme={{
