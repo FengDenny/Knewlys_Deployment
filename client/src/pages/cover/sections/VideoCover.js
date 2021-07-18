@@ -102,7 +102,6 @@ function VideoCover() {
               theme={{
                 headerMain: "var(--white-color)",
                 fontSizeXLG: "84px",
-                paragraphRight: "5px",
               }}
             >
               Knewlys
