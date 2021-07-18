@@ -15,6 +15,7 @@ const size = {
 
 const height = {
   mobileM: "667px",
+  mobileL: "896px",
 };
 
 export const MediaHeight = (key) => {
@@ -66,7 +67,8 @@ export const VideoContainer = styled.div`
   ${MediaQueries("mobileL")`
     height:31vh;
   `}
-   ${MediaQueries("mobileM")`
+   ${MediaQueries("mobileM") &&
+  MediaHeight("mobileL")`
     height:26vh;
   `}
   ${MediaHeight("mobileM")`
