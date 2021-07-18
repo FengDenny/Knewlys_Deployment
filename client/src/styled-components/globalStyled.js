@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { motion } from "framer-motion";
+import { MediaQueries } from "./styled";
 
 // Global styling
 export const GlobalStyles = createGlobalStyle`
@@ -75,6 +76,11 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   height: ${(props) => props.theme.height100};
   margin: auto;
   width: ${(props) => props.theme.width50};
+
+  ${MediaQueries("laptop")`
+  height: 30vh;
+  width:46%;
+  `}
 `;
 
 export const MiddleFlexHeight = styled(MiddleFlexDisplayed)`
@@ -92,6 +98,11 @@ export const Header = styled(motion.h5)`
   align-self: flex-start;
   font-weight: ${(props) => props.theme.fontWeight};
   width: ${(props) => props.theme.width50};
+
+  ${MediaQueries("laptop")`
+  font-size: var(--font-size-lg);
+
+  `}
 `;
 
 export const MidHeader = styled.h3`
@@ -206,6 +217,11 @@ export const Button = styled.button`
           ? "var( --gradient-primary)"
           : "none"}   
   }
+
+  ${MediaQueries("laptop")`
+  padding: 7px 0px 6px 7px;
+  `}
+
 `;
 
 export const GridTwo = styled.div`
@@ -215,6 +231,10 @@ export const GridTwo = styled.div`
   width: 100%;
   padding: 25px 0 0 0;
   grid-gap: 5px;
+
+  ${MediaQueries("laptop")`
+  grid-template-columns: repeat(1, 1fr);
+  `}
 `;
 
 export const NavGridThree = styled(GridTwo)`
@@ -225,6 +245,10 @@ export const NavGridThree = styled(GridTwo)`
 export const VowsSection = styled(motion.section)`
   margin-top: 1000px;
   overflow: hidden;
+
+  ${MediaQueries("laptop")`
+  margin-top: 808px;
+  `}
 `;
 export const VowsSectionGrid = styled(GridTwo)`
   grid-template-rows: 500px;
@@ -240,6 +264,12 @@ export const VowSectionImage = styled.img`
   position: relative;
   bottom: ${(props) => props.theme.bottom};
   width: 500px;
+
+  ${MediaQueries("laptop")`
+  display: flex;
+    justify-content: center;
+    align-self: center;
+  `}
 `;
 
 // Gallery
@@ -266,12 +296,24 @@ export const GalleryBG = styled(motion.div)`
     border-radius: 0 0 50% 50%/0 0 100% 100%;
     transform: scaleX(1.4);
   }
+
+  ${MediaQueries("laptop")`
+  height:87vh;
+`}
 `;
 export const GallerySectionGrid = styled(VowsSectionGrid)`
   grid-template-rows: 600px;
+
+  ${MediaQueries("laptop")`
+  grid-template-rows: 350px;
+`}
 `;
 export const GallerySectionImage = styled(VowSectionImage)`
   left: 50px;
+  ${MediaQueries("laptop")`
+  top:30px;
+  left:0;
+  `}
 `;
 
 // WeddingLocations
@@ -280,6 +322,9 @@ export const WeddingMotion = styled(motion.div)``;
 
 export const WeddingLocationGrid = styled(VowsSectionGrid)`
   grid-template-rows: 680px;
+  ${MediaQueries("laptop")`
+  grid-template-rows: 450px;
+  `}
 `;
 
 export const WeddingSectionImage = styled(VowSectionImage)``;
@@ -488,6 +533,10 @@ export const FooterHeader = styled(Header)`
   position: relative;
   top: 20px;
   font-weight: normal;
+
+  ${MediaQueries("laptop")`
+    font-size: var(--font-size)
+  `}
 `;
 export const FooterLI = styled(LI)`
   position: relative;
