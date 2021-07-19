@@ -13,15 +13,6 @@ const size = {
   desktop: "2560px",
 };
 
-const height = {
-  mobileM: "667px",
-  mobileL: "896px",
-};
-
-export const MediaHeight = (key) => {
-  return (style) => `@media (max-height: ${height[key]}){${style}}`;
-};
-
 export const MediaQueries = (key) => {
   return (style) => `@media (max-width: ${size[key]}){${style}}`;
 };
@@ -65,14 +56,12 @@ export const VideoContainer = styled.div`
   `}
 
   ${MediaQueries("mobileL")`
-    height:31vh;
-  `}
-   ${MediaQueries("mobileM") &&
-  MediaHeight("mobileL")`
     height:26vh;
+    border-radius: 0;
   `}
-  ${MediaHeight("mobileM")`
-    height:32vh;
+   ${MediaQueries("mobileM")`
+    height:26vh;
+    
   `}
 `;
 export const Video = styled(VideoContainer)`
