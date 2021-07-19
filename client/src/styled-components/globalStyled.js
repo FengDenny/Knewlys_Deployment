@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { motion } from "framer-motion";
-import { MediaQueries, MediaHeight } from "./styled";
+import { MediaQueries } from "./styled";
 
 // Global styling
 export const GlobalStyles = createGlobalStyle`
@@ -273,7 +273,7 @@ export const GridTwo = styled.div`
   ${MediaQueries("laptop")`
   grid-template-columns: repeat(1, 1fr);
   `}
-  ${MediaHeight("mobileL")`
+  ${MediaQueries("mobileL")`
    padding: 5px 0 0 0;
   `}
 `;
