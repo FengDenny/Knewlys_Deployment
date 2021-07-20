@@ -23,6 +23,7 @@ a {
 :root{
   --primary-font: 'Work Sans', sans-serif;
   --primary-color: #ff0844;
+  --border-color-dark:#bb002d;
   --gradient-primary: linear-gradient(to left, #ff0844, #ffb199);
   --gradient-hover: linear-gradient(to top, #ff0844, #ffb199);
   --secondary-color: #4A5961;
@@ -246,13 +247,13 @@ export const Button = styled.button`
       props.primary
         ? "var( --gradient-hover)"
         : "none" || props.secondary
-        ? "var( --gradient-primary)"
+        ? "none"
         : "none"};
       border: ${(props) =>
         props.primary
           ? " 2px solid var(--gradient-hover)"
           : "none" || props.secondary
-          ? "var( --gradient-primary)"
+          ? "2px solid var(--border-color-dark)"
           : "none"}   
   }
 
