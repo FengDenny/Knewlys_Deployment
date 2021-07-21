@@ -17,13 +17,13 @@ exports.getAll = (Model, select) =>
     });
   });
 
-exports.getOne = (Model, select, populates) =>
+exports.getOne = (Model, select) =>
   CatchAsync(async (req, res, next) => {
-    let query = Model.find(req.params.id).select(select);
-    if (populates) query = query.populate(populates);
+    let query = Model.findById(req.params.userID).select(select);
+    // if (populates) query = query.populate(populates);
     const doc = await query;
     if (!doc) {
-      return next(new AppError(`No document found with id: ${_id}`, 404));
+      return next(new AppError(`No document found with that ID.`, 404));
     }
     res.status(200).json({
       status: "success",
