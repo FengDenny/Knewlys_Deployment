@@ -10,7 +10,11 @@ dotenv.config({ path: "./config/config.env" });
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // sending email requirements END
-const { emailVerify, resetPassword } = require("../views/email/email");
+const {
+  emailVerify,
+  resetPassword,
+  accountActivated,
+} = require("../views/email/email");
 const { promisify } = require("util");
 
 exports.signup = CatchAsync(async (req, res, next) => {
@@ -75,6 +79,23 @@ exports.accountActivation = CatchAsync(async (req, res, next) => {
                 `${email} has already been activated. Please login.`,
                 401
               )
+            );
+          }
+          try {
+            const url = `${process.env.CLIENT_URL}/`;
+            const accountIsActivated = {
+              from: process.env.EMAIL_FROM,
+              to: email,
+              subject: "Account Activated",
+              html: accountActivated(url),
+            };
+
+            sgMail.send(accountIsActivated);
+          } catch (err) {
+            console.log(err);
+            return next(
+              new AppError("There was a problem sending your email"),
+              500
             );
           }
           return res.json({
