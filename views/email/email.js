@@ -58,7 +58,7 @@ exports.accountActivated = (loginURL) => {
   </tr>
   <tr>
     <td style="padding: 20px 0 30px 0;">
-      <p style="margin: 0; color:gray; width:700px; line-height:20px"> If the link doesn't work, please copy and paste this url to activate: ${loginURL}</p>
+      <p style="margin: 0; color:gray; width:700px; line-height:20px"> If the link doesn't work, please copy and paste this url to sign in: ${loginURL}</p>
     </td>
   </tr>
 </table>
