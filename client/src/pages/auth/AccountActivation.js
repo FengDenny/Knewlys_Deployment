@@ -42,10 +42,12 @@ function AccountActivation({ match }) {
     await axios
       .post(url, data)
       .then((response) => {
-        console.log("ACCOUNT ACTIVATED: ", response.data);
+        console.log("ACCOUNT ACTIVATED: ", response.data.message);
         setValues({ ...values, show: false });
         if (response.data.status === "success") {
-          window.location.replace("/");
+          setTimeout(() => {
+            window.location.replace("/");
+          }, 2500);
         }
       })
       .catch((err) => {
