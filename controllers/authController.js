@@ -280,6 +280,7 @@ exports.protect = CatchAsync(async (req, res, next) => {
   next();
 });
 
+// use this to update password
 exports.updateUserPassword = CatchAsync(async (req, res, next) => {
   const { password, currentPassword } = req.body;
   const user = await User.findById(req.user.id).select("+password");
