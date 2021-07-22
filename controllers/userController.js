@@ -3,7 +3,7 @@ const formidable = require("formidable");
 const User = require("../models/userModel");
 const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
-const { getAll, getOne } = require("./handlersFactory");
+const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
 
 exports.userID = async (req, res, next, id) => {
   await User.findById(id).exec((err, user) => {
@@ -16,13 +16,48 @@ exports.userID = async (req, res, next, id) => {
     next();
   });
 };
+// get logged in user account info
+exports.getAccount = (req, res, next) => {
+  req.params.userID = req.user.id;
+  next();
+};
 
-// exports.getUser = async (req, res) => {
-//   req.profile.passwordResetExpires = undefined;
-//   req.profile.passwordResetToken = undefined;
-//   return await res.json(req.profile);
-// };
+// update logged in user account info except password
+exports.updateAccount = CatchAsync(async (req, res, next) => {
+  if (req.body.password) {
+    return next(
+      new AppError(
+        "Please, use /account/updatePassword to update password.",
+        400
+      )
+    );
+  }
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: updatedUser,
+    },
+  });
+});
+
+// delete logged in user account
+exports.deleteAccount = CatchAsync(async (req, res, next) => {
+  await User.findByIdAndDelete(req.user.id, { active: false });
+  res.status(204).json({
+    status: "success",
+    data: null,
+  });
+});
 
 // Handler factory
 exports.getAllUser = getAll(User, "email createdAt");
 exports.getUser = getOne(User, "email createdAt");
+
+// for admins account only
+// non-password update
+exports.updateUser = updateOne(User);
+exports.deleteUser = deleteOne(User);
