@@ -38,9 +38,4 @@ router.get("/auth/logout", logout);
 router.post("/auth/forgotPassword", forgotPassword);
 router.patch("/auth/resetPassword/:token", resetPassword);
 
-// @desc Update User Password
-// @route PATCH /api/v1/auth/updatePassword
-// @access Private
-router.patch("/auth/updatePassword", protect, updateUserPassword);
-
 module.exports = router;
