@@ -10,9 +10,10 @@ exports.createOne = (Model) =>
   });
 
 // Read
-exports.getAll = (Model, select) =>
+exports.getAll = (Model, select, populates, popSelect) =>
   CatchAsync(async (req, res, next) => {
     let query = Model.find().select(select);
+    if (populates) query = query.populate(populates, popSelect);
     const doc = await query;
     if (!doc) {
       return next(new AppError("No document found", 404));
@@ -33,14 +34,15 @@ exports.getOne = (Model, select) =>
     const doc = await query;
     if (!doc) {
       return next(new AppError(`No document found with that ID.`, 404));
+    } else if (doc) {
+      res.status(200).json({
+        status: "success",
+        results: doc.length,
+        data: {
+          data: doc,
+        },
+      });
     }
-    res.status(200).json({
-      status: "success",
-      results: doc.length,
-      data: {
-        data: doc,
-      },
-    });
   });
 
 // Update (non-password)
@@ -54,13 +56,14 @@ exports.updateOne = (Model) =>
 
     if (!doc) {
       return next(new AppError(`No document found with that ID.`, 404));
+    } else if (doc) {
+      res.status(200).json({
+        status: "success",
+        data: {
+          data: doc,
+        },
+      });
     }
-    res.status(200).json({
-      status: "success",
-      data: {
-        data: doc,
-      },
-    });
   });
 
 // Delete
