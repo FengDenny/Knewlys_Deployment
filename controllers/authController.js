@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
 const jwt = require("jsonwebtoken");
-const jwtExpress = require("express-jwt");
+const expressJwt = require("express-jwt");
 const crypto = require("crypto");
 // sending email requirements START
 const dotenv = require("dotenv");
@@ -278,6 +278,13 @@ exports.protect = CatchAsync(async (req, res, next) => {
   req.user = currentUser;
   res.locals.user = currentUser;
   next();
+});
+
+//
+exports.protected = expressJwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ["HS256"],
+  userProperty: "auth",
 });
 
 // use this to update password
