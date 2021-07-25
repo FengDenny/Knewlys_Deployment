@@ -14,8 +14,19 @@ exports.userSignupValidation = [
     ),
 ];
 
-// validation result
+// Post create validator
+exports.createPostValidator = [
+  check("title").notEmpty().withMessage("Provide a title"),
+  check("title")
+    .isLength({ min: 4, max: 150 })
+    .withMessage("Title must be between 4 to 150 characters"),
+  check("body").notEmpty().withMessage("Provide a body"),
+  check("title")
+    .isLength({ min: 4, max: 1000 })
+    .withMessage("Body must be between 4 to 1000 characters"),
+];
 
+// validation result
 exports.runValidationResult = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
