@@ -1,5 +1,3 @@
-const _ = require("lodash");
-const formidable = require("formidable");
 const User = require("../models/userModel");
 const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
