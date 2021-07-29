@@ -22,13 +22,12 @@ a {
   }
 :root{
   --primary-font: 'Work Sans', sans-serif;
-  --primary-color: #ff0844;
+  --primary-color: #e04f72;
   --border-color-dark:#bb002d;
-  --gradient-primary: linear-gradient(to left, #ff0844, #ffb199);
-  --gradient-hover: linear-gradient(to top, #ff0844, #ffb199);
+  --gradient-primary: linear-gradient(to right, #e04f72, #D1234C);
+  --gradient-hover: linear-gradient(to top, #e04f72, #D1234C);
   --secondary-color: #4A5961;
-  --secondary-color-hover: #3A464D;
-  --nav-footer-color: #445259;
+  --secondary-color-hover: #3A464D;setNavLinkColor("var(--white-color)")
   --form-label-color: #94A3B1;
   --form-label-white-gray-color: #DADADA;
   --form-button-submit: #00c04d;
@@ -36,9 +35,9 @@ a {
   --form-header-color:#25313C;
   --white-color: #FFFFFF;
   --error-color: red;
-  --content-overlay: rgba(0, 0, 0, 0.5);
+  --content-overlay: rgba(0, 0, 0, 0.2);
   --box-shadow: 0 24px 21px 0 var(--content-overlay);
-  --box-shadow-light: 0 15px 45px 0 var(--content-overlay);
+  --box-shadow-light: 0 15px 40px 0 var(--content-overlay);
   --box-shadow-sm: 0 3px 3px 0 var(--content-overlay);
   --font-size-xlg: 64px;
   --font-size-48: 48px;
@@ -513,8 +512,8 @@ color: ${(props) =>
 // Navbar
 
 export const Nav = styled.nav`
-  background: var(--nav-footer-color);
-  color: var(--white-color);
+  position: fixed;
+  width: 100%;
 `;
 export const NavLogo = styled(Header)`
   position: relative;
@@ -565,17 +564,17 @@ export const NavAuthSpan = styled.span`
 `;
 
 export const NavLogoutBtn = styled.button`
-  border: 1px solid var(--white-color);
-  border-radius: 2px;
+  border-radius: 5px;
   width: 146px;
   height: 29px;
   color: var(--white-color);
   background: none;
   cursor: pointer;
   box-shadow: var(--box-shadow-light);
-  &:hover {
-    background: var(--secondary-color);
-  }
+  // &:hover {
+  //   background: var(--white-color);
+  //   color: var(--primary-color);
+  // }
 `;
 
 // Navbar dropdown
@@ -595,16 +594,16 @@ export const Dropdown = styled.div`
 export const DropdownContent = styled.div`
   display: none;
   position: absolute;
-  background-color: var(--nav-footer-color);
+  background-color: var(--white-color);
   min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0, 2);
   padding: 12px 16px;
   z-index: 1;
   border-radius: 2px;
-  border: 1px solid var(--nav-footer-color);
+  border: 1px solid var(--white-color);
 `;
 export const HRLine = styled.hr`
-  border: 1px solid var(--form-label-color);
+  border: 1px solid var(--white-color);
   border-radius: 1px;
   // top right bottom left
   margin: 5px 0 5px 0;
