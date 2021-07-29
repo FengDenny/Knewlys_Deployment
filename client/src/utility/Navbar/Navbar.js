@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DropdownProfile from "./DropdownProfile";
 import DropdownWedding from "./DropdownWedding";
 import { NavLink } from "react-router-dom";
@@ -48,17 +48,49 @@ library.add(
 
 function Navbar() {
   const { auth } = useSelector((state) => ({ ...state }));
+  const [navSize, setNavSize] = useState("8rem");
+  const [navbarColor, setNavbarColor] = useState("transparent");
+  const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
+  const [navAuthBorderColor, setNavAuthBorderColor] = useState(
+    "1px solid var(--primary-color)"
+  );
   // grab first letter of auth email
-  const firstLetterEmail = auth.email.split("");
+  const firstLetterEmail = auth.email.toUpperCase().split("");
   const beforeAt = auth.email.split("@");
   const dispatch = useDispatch();
 
+  // navbar scroll eventHandler
+  const listenToScrollEvent = () => {
+    window.scrollY >= 80
+      ? setNavbarColor("var(--primary-color)")
+      : setNavbarColor("transparent");
+    window.scrollY >= 80 ? setNavSize("5rem") : setNavSize("8rem");
+    window.scrollY >= 80
+      ? setNavLinkColor("var(--white-color)")
+      : setNavLinkColor("var(--primary-color)");
+    window.scrollY >= 80
+      ? setNavAuthBorderColor("1px solid var(--white-color)")
+      : setNavAuthBorderColor("1px solid var(--primary-color)");
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScrollEvent);
+  }, []);
+
+  // logout dispatch button
   const logout = () => {
     dispatch(setUserLoggedOut());
   };
 
   return (
-    <Nav>
+    <Nav
+      style={{
+        backgroundColor: `${navbarColor}`,
+        height: `${navSize}`,
+        color: `${navLinkColor}`,
+        transition: "all 1s",
+      }}
+    >
       <Container>
         <ThemeProvider theme={theme}>
           <NavGridThree>
@@ -68,9 +100,10 @@ function Navbar() {
             <UL>
               <LI theme={{ fontSizeXLG: "var(--font-size-sm)" }}>
                 <NavLink
-                  activeStyle={{ borderBottom: "1px solid #C4B7BD" }}
+                  activeStyle={{ borderBottom: "1px solid #fff" }}
                   exact
                   to='#'
+                  style={{ color: navLinkColor }}
                 >
                   Gallery
                 </NavLink>
@@ -97,7 +130,7 @@ function Navbar() {
             </UL>
             <Dropdown>
               <NavAuthUL>
-                <NavAuth>
+                <NavAuth style={{ border: navAuthBorderColor }}>
                   <NavAuthAccount theme={{ justifyContent: "center" }}>
                     {firstLetterEmail[0]}
                   </NavAuthAccount>
