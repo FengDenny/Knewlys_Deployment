@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 function DropdownProfile({
   DropdownContent,
   NavAuthSpan,
@@ -14,33 +14,95 @@ function DropdownProfile({
   FontAwesomeIcon,
   NavLink,
 }) {
+  const [backgroundColor, setBackgroundColor] = useState(
+    "var(--primary-color)"
+  );
+  const [hrLineColor, sethrLineColor] = useState(
+    "1px solid var(--white-color)"
+  );
+  const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
+
+  const [navAuthBorderColor, setNavAuthBorderColor] = useState(
+    "1px solid var(--primary-color)"
+  );
+  const [logOutBorderColor, setLogOutBorderColor] = useState(
+    "1px solid var(--primary-color)"
+  );
+
+  // navbar scroll eventHandler
+  const listenToScrollEvent = () => {
+    window.scrollY >= 80
+      ? setBackgroundColor("var(--primary-color)")
+      : setBackgroundColor("transparent");
+    setNavAuthBorderColor("2px solid var(--primary-color)");
+
+    window.scrollY >= 80
+      ? sethrLineColor("1px solid var(--white-color)")
+      : sethrLineColor("1px solid var(--primary-color)");
+    window.scrollY >= 80
+      ? setNavLinkColor("var(--white-color")
+      : setNavLinkColor("var(--primary-color)");
+    window.scrollY >= 80
+      ? setLogOutBorderColor("2px solid var(--white-color)")
+      : setLogOutBorderColor("2px solid var(--primary-color)");
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScrollEvent);
+  }, []);
+
   return (
-    <DropdownContent>
+    <DropdownContent
+      style={{
+        backgroundColor: backgroundColor,
+        border: navAuthBorderColor,
+      }}
+    >
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faUser} size='1x' />
-          <NavAuthSpan>{beforeAt[0]}'s profile</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faUser}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>
+            {beforeAt[0]}'s profile
+          </NavAuthSpan>
         </NavLink>
       </DropdownPadding>
-      <HRLine />
+      <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faHeart} size='1x' />
-          <NavAuthSpan>My Gallery</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faHeart}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>My Gallery</NavAuthSpan>
         </NavLink>
       </DropdownPadding>
-      <HRLine />
+      <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faPlusSquare} size='1x' />
-          <NavAuthSpan>Post Gallery</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faPlusSquare}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>
+            Post Gallery
+          </NavAuthSpan>
         </NavLink>
       </DropdownPadding>
-      <HRLine />
+      <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
-        <NavLogoutBtn onClick={logout}>
-          <FontAwesomeIcon icon={faSignOutAlt} size='1x' />
-          <NavAuthSpan>Logout</NavAuthSpan>
+        <NavLogoutBtn onClick={logout} style={{ border: logOutBorderColor }}>
+          <FontAwesomeIcon
+            icon={faSignOutAlt}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>Logout</NavAuthSpan>
         </NavLogoutBtn>
       </DropdownPadding>
     </DropdownContent>
