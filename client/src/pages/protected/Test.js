@@ -4,8 +4,15 @@ import { useSelector } from "react-redux";
 function Test() {
   const { auth } = useSelector((state) => ({ ...state }));
   return (
-    <div>
-      <h2>Hello, {auth.email}</h2>
+    <div
+      style={{
+        height: "100vh",
+        justifyContent: " center",
+        display: "flex",
+        color: "var(--secondary-color)",
+      }}
+    >
+      <h2 style={{ marginTop: "300px" }}>Hello, {auth.email}</h2>
     </div>
   );
 }
