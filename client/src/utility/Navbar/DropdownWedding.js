@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function DropdownWedding({
   DropdownContent,
@@ -11,26 +11,70 @@ function DropdownWedding({
   FontAwesomeIcon,
   NavLink,
 }) {
+  const [backgroundColor, setBackgroundColor] = useState(
+    "var(--primary-color)"
+  );
+  const [hrLineColor, sethrLineColor] = useState(
+    "1px solid var(--white-color)"
+  );
+  const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
+
+  const [navWedBorderColor, setNavWedBorderColor] = useState(
+    "1px solid var(--primary-color)"
+  );
+
+  // navbar scroll eventHandler
+  const listenToScrollEvent = () => {
+    window.scrollY >= 80
+      ? setBackgroundColor("var(--primary-color)")
+      : setBackgroundColor("transparent");
+    setNavWedBorderColor("2px solid var(--primary-color)");
+
+    window.scrollY >= 80
+      ? sethrLineColor("1px solid var(--white-color)")
+      : sethrLineColor("1px solid var(--primary-color)");
+    window.scrollY >= 80
+      ? setNavLinkColor("var(--white-color")
+      : setNavLinkColor("var(--primary-color)");
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScrollEvent);
+  }, []);
   return (
-    <DropdownContent>
+    <DropdownContent
+      style={{ backgroundColor: backgroundColor, border: navWedBorderColor }}
+    >
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faCalendarCheck} size='1x' />
-          <NavAuthSpan>Upcoming</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faCalendarCheck}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>Upcoming</NavAuthSpan>
         </NavLink>
       </DropdownPadding>
-      <HRLine />
+      <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faCalendarAlt} size='1x' />
-          <NavAuthSpan>Future</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faCalendarAlt}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>Future</NavAuthSpan>
         </NavLink>
       </DropdownPadding>
-      <HRLine />
+      <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
         <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
-          <FontAwesomeIcon icon={faMapMarkerAlt} size='1x' />
-          <NavAuthSpan>Venues</NavAuthSpan>
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            size='1x'
+            style={{ color: navLinkColor }}
+          />
+          <NavAuthSpan style={{ color: navLinkColor }}>Venues</NavAuthSpan>
         </NavLink>
       </DropdownPadding>
     </DropdownContent>
