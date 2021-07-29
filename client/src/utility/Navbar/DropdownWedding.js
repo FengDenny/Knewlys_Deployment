@@ -11,16 +11,14 @@ function DropdownWedding({
   FontAwesomeIcon,
   NavLink,
 }) {
-  const [backgroundColor, setBackgroundColor] = useState(
-    "var(--primary-color)"
-  );
+  const [backgroundColor, setBackgroundColor] = useState("transparent");
   const [hrLineColor, sethrLineColor] = useState(
-    "1px solid var(--white-color)"
+    "1px solid var(--primary-color)"
   );
   const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
 
   const [navWedBorderColor, setNavWedBorderColor] = useState(
-    "1px solid var(--primary-color)"
+    "2px solid var(--primary-color)"
   );
 
   // navbar scroll eventHandler
