@@ -262,6 +262,13 @@ export const Button = styled.button`
 
 `;
 
+export const DropdownButton = styled(Button)`
+  border: none;
+  &:hover {
+    border: none;
+  }
+`;
+
 export const GridTwo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
