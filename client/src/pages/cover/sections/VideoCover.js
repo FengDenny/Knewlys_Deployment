@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import throwingFlower from "../../../images/video_cover/throwingFlowers.mp4";
 import weddingCeremony from "../../../images/video_cover/fan_wedding.mp4";
 import { smoothScrolling } from "../../../components/js/smoothScrolling";
 import {
@@ -129,29 +128,27 @@ function VideoCover() {
               >
                 SIGN IN
               </Button>
-              <StyledModal
-                isOpen={modalOpen}
-                afterOpen={afterOpen}
-                beforeClose={beforeClose}
-                onBackgroundClick={closeModal}
-                backgroundProps={{ opacity }}
-              >
-                <StyledCloseModal onClick={closeModal}>
-                  &times;
-                </StyledCloseModal>
-
-                {active === "signup" && <SignUp />}
-                {active === "signin" && <SignIn />}
-                {active === "forgot" && <ForgotPassword />}
-                {active === "redirect" && <Redirect />}
-              </StyledModal>
             </GridTwo>
             <SmoothScrollLink href='#vows'>
               <BounceScrollDownArrow />
             </SmoothScrollLink>
           </ThemeProvider>
         </VideoSection>
-      </VideoContainer>
+      </VideoContainer>{" "}
+      <StyledModal
+        isOpen={modalOpen}
+        afterOpen={afterOpen}
+        beforeClose={beforeClose}
+        onBackgroundClick={closeModal}
+        backgroundProps={{ opacity }}
+      >
+        <StyledCloseModal onClick={closeModal}>&times;</StyledCloseModal>
+
+        {active === "signup" && <SignUp />}
+        {active === "signin" && <SignIn />}
+        {active === "forgot" && <ForgotPassword />}
+        {active === "redirect" && <Redirect />}
+      </StyledModal>
     </AccountContext.Provider>
   );
 }
