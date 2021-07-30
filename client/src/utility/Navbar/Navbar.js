@@ -25,6 +25,7 @@ import {
   NavLogoutBtn,
   HRLine,
   Cursor,
+  DropdownButton,
 } from "../../styled-components/globalStyled";
 import {
   faUser,
@@ -48,6 +49,35 @@ library.add(
 
 function Navbar() {
   const { auth } = useSelector((state) => ({ ...state }));
+
+  // modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [active, setActive] = useState("post");
+  const [opacity, setOpacity] = useState(0);
+
+  const openModal = () => {
+    setOpacity(0);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const afterOpen = () => {
+    setTimeout(() => {
+      setOpacity(1);
+    }, 100);
+  };
+
+  const beforeClose = () => {
+    return new Promise((resolve) => {
+      setOpacity(0);
+      setTimeout(resolve, 200);
+    });
+  };
+
+  // scrollevent
   const [navSize, setNavSize] = useState("8rem");
   const [navbarColor, setNavbarColor] = useState("transparent");
   const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
@@ -150,6 +180,15 @@ function Navbar() {
                 logout={logout}
                 FontAwesomeIcon={FontAwesomeIcon}
                 NavLink={NavLink}
+                DropdownButton={DropdownButton}
+                openModal={openModal}
+                setActive={setActive}
+                modalOpen={modalOpen}
+                active={active}
+                opacity={opacity}
+                closeModal={closeModal}
+                afterOpen={afterOpen}
+                beforeClose={beforeClose}
               />
             </Dropdown>
           </NavGridThree>
