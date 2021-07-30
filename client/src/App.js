@@ -65,7 +65,9 @@ function App() {
               )}
               {auth._id && auth.email && (
                 <Fragment>
-                  <Navbar />
+                  <ModalProvider backgroundComponent={FadingBackground}>
+                    <Navbar />
+                  </ModalProvider>
                   <PrivateRoute
                     exact
                     path='/'
@@ -81,6 +83,7 @@ function App() {
           </AppContent>
           {/* show footer content iff user is authenticated */}
           {/* {auth._id && auth.email && <Footer />} */}
+
           <Footer />
         </AppWrapper>
       </Router>
