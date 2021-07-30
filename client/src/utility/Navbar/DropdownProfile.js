@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { StyledModal, StyledCloseModal } from "../../styled-components/styled";
+import Post from "../../pages/protected/DropdownProfile/Post";
 function DropdownProfile({
   DropdownContent,
   NavAuthSpan,
@@ -13,7 +15,17 @@ function DropdownProfile({
   logout,
   FontAwesomeIcon,
   NavLink,
+  DropdownButton,
+  openModal,
+  setActive,
+  modalOpen,
+  active,
+  opacity,
+  closeModal,
+  afterOpen,
+  beforeClose,
 }) {
+  // scroll events
   const [backgroundColor, setBackgroundColor] = useState("transparent");
   const [hrLineColor, sethrLineColor] = useState(
     "1px solid var(--primary-color)"
@@ -81,7 +93,12 @@ function DropdownProfile({
       </DropdownPadding>
       <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
-        <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
+        <DropdownButton
+          onClick={() => {
+            openModal();
+            setActive("post");
+          }}
+        >
           <FontAwesomeIcon
             icon={faPlusSquare}
             size='1x'
@@ -90,7 +107,7 @@ function DropdownProfile({
           <NavAuthSpan style={{ color: navLinkColor }}>
             Post Gallery
           </NavAuthSpan>
-        </NavLink>
+        </DropdownButton>
       </DropdownPadding>
       <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
@@ -103,6 +120,16 @@ function DropdownProfile({
           <NavAuthSpan style={{ color: navLinkColor }}>Logout</NavAuthSpan>
         </NavLogoutBtn>
       </DropdownPadding>
+      <StyledModal
+        isOpen={modalOpen}
+        afterOpen={afterOpen}
+        beforeClose={beforeClose}
+        onBackgroundClick={closeModal}
+        backgroundProps={{ opacity }}
+      >
+        <StyledCloseModal onClick={closeModal}>&times;</StyledCloseModal>
+        {active === "post" && <Post />}
+      </StyledModal>
     </DropdownContent>
   );
 }
