@@ -88,6 +88,7 @@ function Navbar() {
   const firstLetterEmail = auth.email.toUpperCase().split("");
   const beforeAt = auth.email.split("@");
   const dispatch = useDispatch();
+  const userID = auth._id;
 
   // navbar scroll eventHandler
   const listenToScrollEvent = () => {
@@ -110,6 +111,8 @@ function Navbar() {
   // logout dispatch button
   const logout = () => {
     dispatch(setUserLoggedOut());
+    // To fix issue with userprofile route
+    window.location.replace("/");
   };
 
   return (
@@ -189,6 +192,7 @@ function Navbar() {
                 closeModal={closeModal}
                 afterOpen={afterOpen}
                 beforeClose={beforeClose}
+                userID={userID}
               />
             </Dropdown>
           </NavGridThree>
