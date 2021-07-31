@@ -11,6 +11,7 @@ import { ModalProvider } from "styled-react-modal";
 import Home from "./pages/cover/Home";
 import Activate from "./pages/auth/AccountActivation";
 import Test from "./pages/protected/Test";
+import UserProfile from "./pages/protected/DropdownProfile/UserProfile";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import Navbar from "./utility/Navbar/Navbar";
 import Footer from "./utility/Footer/Footer";
@@ -74,6 +75,15 @@ function App() {
                     render={(props) => (
                       <Page title='Test Auth'>
                         <Test {...props} />
+                      </Page>
+                    )}
+                  />
+                  <PrivateRoute
+                    exact
+                    path='/user/:userID'
+                    render={(props) => (
+                      <Page title={`${auth.email} profile`}>
+                        <UserProfile {...props} />
                       </Page>
                     )}
                   />
