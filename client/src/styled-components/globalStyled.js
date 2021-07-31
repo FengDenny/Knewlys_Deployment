@@ -223,7 +223,7 @@ export const theme = {
   fontSizeXSmall: "var(--font-size-xsm)",
   fontSizeXLG: "var(--font-size-xlg)",
   inputWidth: "334px",
-  buttonWdith: "334px",
+  buttonWidth: "334px",
   formLabelColor: "var(--form-label-color)",
   paragraphRight: " 5px;",
   paragraphLeft: "5px",
@@ -248,18 +248,24 @@ export const Button = styled.button`
       ? "var( --gradient-primary)"
       : "none" || props.secondary
       ? "none"
+      : "var(--secondary-color)" || props.tertiary
+      ? "none"
       : "var(--secondary-color)"};
   color: ${(props) =>
     props.primary
       ? "var(--white-color)"
       : "var(--secondary-color)" || props.secondary
       ? "var(--white-color)"
+      : "var(--secondary-color)" || props.tertiary
+      ? "var(--secondary-color)"
       : "var(--secondary-color)"}}
   font-size: var(--font-size-sm);
   border:${(props) =>
     props.primary
       ? "2px solid var(--gradient-primary)"
       : " none" || props.secondary
+      ? "2px solid var(--primary-color)"
+      : "none" || props.tertiary
       ? "2px solid var(--primary-color)"
       : "none"};
   border-radius:5px;
@@ -489,6 +495,9 @@ export const FormInput = styled.input`
   //   border: 2px solid green;
   // }
 `;
+export const FormImageInput = styled(FormInput)`
+  margin-top: ${(props) => props.theme.marginTop};
+`;
 
 export const FormParagraph = styled.p`
   font-size: ${(props) => props.theme.fontSizeXSmall};
@@ -515,8 +524,34 @@ export const FormLink = styled(ForgotPasswordLink)`
 
 export const FormButton = styled(Button)`
   margin-top: 20px;
-  width: ${(props) => props.theme.buttonWdith};
+  width: ${(props) => props.theme.buttonWidth};
   height: 40px;
+`;
+export const FormButtonUpload = styled(FormButton)`
+background: ${(props) => (props.tertiary ? "none" : "var(--secondary-color)")};
+color: ${(props) =>
+  props.tertiary ? "var(--secondary-color)" : "var(--secondary-color)"}}
+font-size: var(--font-size-sm);
+border:${(props) =>
+  props.tertiary ? "2px solid var(--primary-color)" : "none"};
+:hover{
+  background: ${(props) => (props.tertiary ? "none" : "none")};
+    border: ${(props) =>
+      props.tertiary ? "2px solid var(--border-color-dark)" : "none"}   
+}
+
+`;
+
+export const FormTextArea = styled.textarea`
+  padding: 10px;
+  max-width: 100%;
+  line-height: 1.5;
+  margin-top: ${(props) => props.theme.marginTop};
+  border-radius: 5px;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 1px 1px 1px #999;
+  // disable resizeable
+  resize: none;
 `;
 
 export const FormSwitch = styled(FormParagraph)`
