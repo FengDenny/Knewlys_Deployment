@@ -129,7 +129,7 @@ exports.signin = CatchAsync(async (req, res, next) => {
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   });
 
-  const { _id } = user;
+  const { _id, createdAt } = user;
 
   return res.json({
     status: "success",
@@ -138,6 +138,7 @@ exports.signin = CatchAsync(async (req, res, next) => {
     user: {
       _id,
       email,
+      createdAt,
     },
   });
 });
