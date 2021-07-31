@@ -24,6 +24,7 @@ function DropdownProfile({
   closeModal,
   afterOpen,
   beforeClose,
+  userID,
 }) {
   // scroll events
   const [backgroundColor, setBackgroundColor] = useState("transparent");
@@ -69,7 +70,7 @@ function DropdownProfile({
       }}
     >
       <DropdownPadding>
-        <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
+        <NavLink activeStyle={{ color: "#fff" }} exact to={`/user/${userID}`}>
           <FontAwesomeIcon
             icon={faUser}
             size='1x'
