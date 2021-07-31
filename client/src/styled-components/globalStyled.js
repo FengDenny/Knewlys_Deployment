@@ -58,6 +58,30 @@ export const Section = styled.section`
   height: ${(props) => props.theme.height100};
 `;
 
+export const Span = styled.span`
+  position: relative;
+  font-family: var(--primary-font);
+  //   change the color theme with props
+  color: ${(props) => props.theme.headerMain};
+  font-size: ${(props) => props.theme.fontSizeXLG};
+  left: ${(props) => props.theme.paragraphLeft};
+  align-self: flex-start;
+  font-weight: ${(props) => props.theme.fontWeight};
+  width: ${(props) => props.theme.width50};
+
+  ${MediaQueries("laptop")`
+font-size: var(--font-size-lg);
+
+`}
+  ${MediaQueries("tablet")`
+font-size: var(--font-size-24);
+`}
+
+${MediaQueries("mobileM")`
+font-size: var(--font-size);
+`}
+`;
+
 export const BodyBackground = styled.div`
   background-color: ${(props) => props.theme.body};
 `;
@@ -202,6 +226,7 @@ export const theme = {
   buttonWdith: "334px",
   formLabelColor: "var(--form-label-color)",
   paragraphRight: " 5px;",
+  paragraphLeft: "5px",
   textDecoration: "underline",
   marginLeft: "0 ",
   marginTop: "0",
@@ -425,6 +450,8 @@ ${MediaQueries("mobileM")`
 width:317px;
 `}
 `;
+
+// User Profile
 
 //Form
 export const FormContainer = styled.form`
