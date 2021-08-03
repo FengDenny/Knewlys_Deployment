@@ -107,19 +107,20 @@ export const VideoSection = styled.div`
 export const StyledModal = Modal.styled`
 
   width: 30rem;
-  height: 30rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   background-color: white;
   opacity: ${(props) => props.opacity};
   transition : all 0.3s ease-in-out;
   border-radius:5px; 
+  padding:20px 0
 `;
 export const StyledCloseModal = styled.span`
   position: relative;
   bottom: 5px;
   left: 420px;
-  font-size: 50px;
+  font-size: 37px;
   color: var(--secondary-color);
   cursor: pointer;
 `;
