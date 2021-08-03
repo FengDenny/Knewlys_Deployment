@@ -5,7 +5,6 @@ const Post = require("../models/postModel");
 const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
 const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
-const { error } = require("console");
 
 exports.postByID = async (req, res, next, id) => {
   await Post.findById(id)
@@ -38,7 +37,7 @@ exports.postedUser = CatchAsync(async (req, res, next) => {
 
 exports.createPost = CatchAsync(async (req, res, next) => {
   let form = new formidable.IncomingForm();
-  //   to keep extensions (jpg, png, etc)
+  //  to keep extensions (jpg, png, etc)
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
@@ -53,7 +52,7 @@ exports.createPost = CatchAsync(async (req, res, next) => {
     post.postedBy = req.profile;
 
     if (files.photo) {
-      post.photo.data = fs.readfileSync(files.photo.path);
+      post.photo.data = fs.readFileSync(files.photo.path);
       post.photo.contentType = files.photo.type;
     }
 
