@@ -139,6 +139,7 @@ exports.signin = CatchAsync(async (req, res, next) => {
       _id,
       email,
       createdAt,
+      token,
     },
   });
 });
