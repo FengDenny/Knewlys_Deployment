@@ -5,22 +5,34 @@ import {
   FormLabel,
   FormImageInput,
   FormTextArea,
-  GridTwo,
   FormContainer,
-  FormParagraph,
   theme,
-  FormLink,
   FormButton,
   FormButtonUpload,
-  FormSwitch,
-  FormLinkSwitch,
+  FormImageBackground,
+  FormImagePreview,
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 
-function PostForm({}) {
+function PostForm({
+  handleImages,
+  fileURL,
+  hiddenFileInput,
+  handlePostSubmit,
+  handleChange,
+  handleSubmit,
+  body,
+}) {
   return (
-    <FormContainer>
+    <FormContainer onSubmit={handleSubmit}>
       <ThemeProvider theme={theme}>
+        {fileURL ? (
+          <FormImageBackground>
+            <FormGroup>
+              <FormImagePreview src={fileURL} alt='images' />
+            </FormGroup>
+          </FormImageBackground>
+        ) : null}
         <FormGroup>
           <FormLabel htmlFor='body'>
             What’s the meaning behind this photo?
@@ -28,8 +40,8 @@ function PostForm({}) {
           <FormTextArea
             type='text'
             name='body'
-            //   value={email}
-            //   onChange={(e) => setEmail(e.target.value)}
+            value={body}
+            onChange={handleChange}
             rows='3'
             cols='50'
             maxLength='150'
@@ -41,18 +53,25 @@ function PostForm({}) {
         <FormGroup>
           <FormImageInput
             type='file'
-            name='uploadImage'
+            name='photo'
             accept='image/*'
+            ref={hiddenFileInput}
+            onChange={handleImages}
             theme={{
               marginTop: "5px",
+              display: "none",
             }}
           />
         </FormGroup>
         <FormGroup>
-          <FormButtonUpload tertiary theme={{ buttonWidth: "400px" }}>
+          <FormButtonUpload
+            tertiary
+            theme={{ buttonWidth: "400px" }}
+            onClick={handlePostSubmit}
+          >
             Upload
           </FormButtonUpload>
-        </FormGroup>{" "}
+        </FormGroup>
         <FormGroup>
           <FormButton primary theme={{ buttonWidth: "400px" }}>
             Post
