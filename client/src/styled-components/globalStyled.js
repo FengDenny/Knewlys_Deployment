@@ -241,6 +241,7 @@ export const theme = {
   fontWeight: "0",
   lineHeight: "22px",
   padding: "5px 0 0 0",
+  display: "none",
 };
 export const Button = styled.button`
   background: ${(props) =>
@@ -497,6 +498,21 @@ export const FormInput = styled.input`
 `;
 export const FormImageInput = styled(FormInput)`
   margin-top: ${(props) => props.theme.marginTop};
+  display: ${(props) => props.theme.display};
+`;
+
+export const FormImagePreview = styled.img`
+  width: 300px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 10px 0;
+`;
+
+export const FormImageBackground = styled.div`
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
 `;
 
 export const FormParagraph = styled.p`
@@ -672,7 +688,7 @@ export const DropdownContent = styled.div`
   border: 1px solid var(--white-color);
 `;
 export const HRLine = styled.hr`
-  border: 1px solid var(--white-color);
+  border: 1px solid ${(props) => props.theme.headerMain};
   border-radius: 1px;
   // top right bottom left
   margin: 5px 0 5px 0;
