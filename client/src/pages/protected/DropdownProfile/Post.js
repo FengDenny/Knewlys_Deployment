@@ -30,9 +30,14 @@ function Post() {
     let postData = new FormData();
     postData.append("body", body);
     photo && postData.append("photo", photo);
-    console.log(...postData);
     let response = await createPost(token, _id, postData);
     console.log("Post response: ", response);
+    setValues({
+      ...values,
+      body: "",
+      photo: "",
+    });
+    setFileURL(null);
   };
 
   const handleChange = async (e) => {
