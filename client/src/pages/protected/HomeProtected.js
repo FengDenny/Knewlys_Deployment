@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-function Test() {
+function HomeProtected() {
   const { auth } = useSelector((state) => ({ ...state }));
   return (
     <div
@@ -16,4 +16,4 @@ function Test() {
     </div>
   );
 }
-export default Test;
+export default HomeProtected;
