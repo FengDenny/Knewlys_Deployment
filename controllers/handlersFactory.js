@@ -5,8 +5,7 @@ const AppError = require("../utility/AppError");
 exports.createOne = (Model) =>
   CatchAsync(async (req, res, next) => {
     let doc = await Model.create(req.body);
-
-    res.status(200).json({ status: "success", data: { data: doc } });
+    res.status(200).json({ status: "success", data: doc });
   });
 
 // Read
@@ -21,10 +20,20 @@ exports.getAll = (Model, select, populates, popSelect) =>
     res.status(200).json({
       status: "success",
       results: doc.length,
-      data: {
-        data: doc,
-      },
+      data: doc,
     });
+  });
+
+exports.getAllImages = (Model) =>
+  CatchAsync(async (req, res, next) => {
+    let query = Model.findById(req.params.id);
+    const doc = await query;
+    if (!doc) {
+      return next(new AppError(`No document found with that ID.`, 404));
+    } else if (doc && doc.photo && doc.photo.data !== null) {
+      res.set("Content-Type", doc.photo.contentType);
+      return res.send(doc.photo.data);
+    }
   });
 
 exports.getOne = (Model, select) =>
@@ -38,9 +47,7 @@ exports.getOne = (Model, select) =>
       res.status(200).json({
         status: "success",
         results: doc.length,
-        data: {
-          data: doc,
-        },
+        data: doc,
       });
     }
   });
@@ -59,9 +66,7 @@ exports.updateOne = (Model) =>
     } else if (doc) {
       res.status(200).json({
         status: "success",
-        data: {
-          data: doc,
-        },
+        data: doc,
       });
     }
   });
@@ -77,8 +82,6 @@ exports.deleteOne = (Model) =>
     res.status(200).json({
       status: "success",
       // no need to return any data
-      data: {
-        data: null,
-      },
+      data: null,
     });
   });
