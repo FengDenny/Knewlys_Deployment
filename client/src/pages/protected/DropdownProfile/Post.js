@@ -50,7 +50,10 @@ function Post() {
   };
 
   const handleImages = (e) => {
-    setFileURL(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files.length !== 0) {
+      setFileURL(URL.createObjectURL(e.target.files[0]));
+    }
+
     setValues({ ...values, photo: e.target.files[0] });
   };
 
