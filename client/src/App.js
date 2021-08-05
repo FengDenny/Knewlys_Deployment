@@ -10,7 +10,7 @@ import { Page } from "./components/pageTitle";
 import { ModalProvider } from "styled-react-modal";
 import Home from "./pages/cover/Home";
 import Activate from "./pages/auth/AccountActivation";
-import Test from "./pages/protected/Test";
+import HomeProtected from "./pages/protected/HomeProtected";
 import UserProfile from "./pages/protected/DropdownProfile/UserProfile";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import Navbar from "./utility/Navbar/Navbar";
@@ -73,8 +73,8 @@ function App() {
                     exact
                     path='/'
                     render={(props) => (
-                      <Page title='Test Auth'>
-                        <Test {...props} />
+                      <Page title='Knewlys | Newlyweds Photos Gallery & Inspirational Weddings'>
+                        <HomeProtected {...props} />
                       </Page>
                     )}
                   />
