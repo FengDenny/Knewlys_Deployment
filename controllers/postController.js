@@ -4,7 +4,13 @@ const fs = require("fs");
 const Post = require("../models/postModel");
 const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
-const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
+const {
+  getAll,
+  getAllImages,
+  getOne,
+  updateOne,
+  deleteOne,
+} = require("./handlersFactory");
 
 exports.postByID = async (req, res, next, id) => {
   await Post.findById(id)
@@ -125,7 +131,9 @@ exports.deletePost = (req, res) => {
 // Handler Factory
 exports.getPost = getAll(
   Post,
-  "_id title body created",
+  "_id title body created photo.contentType",
   "postedBy",
   "_id email createdAt"
 );
+
+exports.getImages = getAllImages(Post);
