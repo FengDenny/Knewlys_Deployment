@@ -53,6 +53,39 @@ a {
 }
 `;
 
+export const theme = {
+  headerMain: "var(--white-color)",
+  modalHeader: "var(--primary-color)",
+  body: "var(--secondary-color)",
+  fontSize: "var(--font-size-lg)",
+  fontSizeXSmall: "var(--font-size-xsm)",
+  fontSizeXLG: "var(--font-size-xlg)",
+  inputWidth: "334px",
+  buttonWidth: "334px",
+  gridTempRow: "35px",
+  formLabelColor: "var(--form-label-color)",
+  paragraphRight: " 5px;",
+  paragraphLeft: "5px",
+  textDecoration: "underline",
+  marginLeft: "0 ",
+  marginTop: "0",
+  marginAuto: "auto",
+  height: "30vh",
+  height100: "100vh",
+  width50: "50%",
+  width100: "100%",
+  alignSelf: "center",
+  alignItems: "flex-start",
+  paragraphWidth: "325px;",
+  justifyContent: " flex-end",
+  bottom: "0",
+  fontWeight: "0",
+  lineHeight: "22px",
+  padding: "5px 0 0 0",
+  display: "none",
+  flexDirection: "column",
+};
+
 export const Section = styled.section`
   margin-top: 200px;
   height: ${(props) => props.theme.height100};
@@ -96,9 +129,9 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: ${(props) => props.theme.alignItems};
-  flex-direction: column;
+  flex-direction: ${(props) => props.theme.flexDirection};
   height: ${(props) => props.theme.height100};
-  margin: auto;
+  margin: ${(props) => props.theme.marginAuto};
   width: ${(props) => props.theme.width50};
 
   ${MediaQueries("laptop")`
@@ -114,6 +147,10 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   height:21vh;
   width:78%;
   `}
+`;
+
+export const MiddleCardFlexDisplayed = styled(MiddleFlexDisplayed)`
+  margin-top: ${(props) => props.theme.marginTop};
 `;
 
 export const MediaFlexDisplay = styled(MiddleFlexDisplayed)`
@@ -215,34 +252,6 @@ export const ParagraphSpan = styled.span`
   padding: 0 0 0 3px;
 `;
 
-export const theme = {
-  headerMain: "var(--white-color)",
-  modalHeader: "var(--primary-color)",
-  body: "var(--secondary-color)",
-  fontSize: "var(--font-size-lg)",
-  fontSizeXSmall: "var(--font-size-xsm)",
-  fontSizeXLG: "var(--font-size-xlg)",
-  inputWidth: "334px",
-  buttonWidth: "334px",
-  formLabelColor: "var(--form-label-color)",
-  paragraphRight: " 5px;",
-  paragraphLeft: "5px",
-  textDecoration: "underline",
-  marginLeft: "0 ",
-  marginTop: "0",
-  height: "30vh",
-  height100: "100vh",
-  width50: "50%",
-  alignSelf: "center",
-  alignItems: "flex-start",
-  paragraphWidth: "325px;",
-  justifyContent: " flex-end",
-  bottom: "0",
-  fontWeight: "0",
-  lineHeight: "22px",
-  padding: "5px 0 0 0",
-  display: "none",
-};
 export const Button = styled.button`
   background: ${(props) =>
     props.primary
@@ -304,8 +313,8 @@ export const DropdownButton = styled(Button)`
 export const GridTwo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 35px;
-  width: 100%;
+  grid-template-rows: ${(props) => props.theme.gridTempRow};
+  width: ${(props) => props.theme.width100};
   padding: 25px 0 0 0;
   grid-gap: 5px;
 
@@ -458,7 +467,18 @@ width:317px;
 `}
 `;
 
-// User Profile
+// Home protected
+
+export const CardSection = styled.section`
+  height: 100vh;
+`;
+
+export const CardImage = styled.img`
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+`;
 
 //Form
 export const FormContainer = styled.form`
@@ -503,11 +523,13 @@ export const FormImageInput = styled(FormInput)`
 
 export const FormImagePreview = styled.img`
   width: 300px;
-  height: auto;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 10px 0;
+  // to contain the image with height of 400px
+  object-fit: contain;
 `;
 
 export const FormImageBackground = styled.div`
