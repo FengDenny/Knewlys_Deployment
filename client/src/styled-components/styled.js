@@ -129,3 +129,13 @@ export const FadingBackground = styled(BaseModalBackground)`
   opacity: ${(props) => props.opacity};
   transition: all 0.3s ease-in-out;
 `;
+
+// Home Protected.js
+export const Card = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+  margin-top: 20px;
+`;
