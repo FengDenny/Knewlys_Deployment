@@ -8,13 +8,18 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
+
 html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background:var(--white-color)
+  background:var(--white-color);
+
 }
+
+
 
 a {
     list-style-type: none;
@@ -64,6 +69,7 @@ export const theme = {
   buttonWidth: "334px",
   gridTempRow: "35px",
   formLabelColor: "var(--form-label-color)",
+  color: "#fff",
   paragraphRight: " 5px;",
   paragraphLeft: "5px",
   textDecoration: "underline",
@@ -79,6 +85,9 @@ export const theme = {
   paragraphWidth: "325px;",
   justifyContent: " flex-end",
   bottom: "0",
+  right: "0",
+  left: "0",
+  top: "0",
   fontWeight: "0",
   lineHeight: "22px",
   padding: "5px 0 0 0",
@@ -131,26 +140,25 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   align-items: ${(props) => props.theme.alignItems};
   flex-direction: ${(props) => props.theme.flexDirection};
   height: ${(props) => props.theme.height100};
-  margin: ${(props) => props.theme.marginAuto};
+  margin-top: ${(props) => props.theme.marginTop};
   width: ${(props) => props.theme.width50};
-
+  height: ${(props) => props.theme.height};
   ${MediaQueries("laptop")`
   height: 30vh;
   width:46%;
-  `}
-
-  ${MediaQueries("mobileL")`
+  `} ${MediaQueries("mobileL")`
   height:15vh;
   width:78%;
-  `}  
-  ${MediaQueries("mobileM")`
+  `} ${MediaQueries("mobileM")`
   height:21vh;
   width:78%;
-  `}
+  `};
 `;
 
 export const MiddleCardFlexDisplayed = styled(MiddleFlexDisplayed)`
-  margin-top: ${(props) => props.theme.marginTop};
+  ${MediaQueries("laptop")`
+  margin-top: 504px;
+  `}
 `;
 
 export const MediaFlexDisplay = styled(MiddleFlexDisplayed)`
@@ -171,6 +179,28 @@ height:40vh;
 export const MiddleFlexHeight = styled(MiddleFlexDisplayed)`
   height: ${(props) => props.theme.height};
   width: 84%;
+`;
+
+export const SectionHeader = styled.div`
+  position: relative;
+  ${MediaQueries("laptop")`
+  font-size: var(--font-size-lg);
+
+  `}
+  ${MediaQueries("tablet")`
+  right:76px;
+  `};
+
+  ${MediaQueries("mobileL")`
+  top:46px;
+  right:103px;
+  `};
+
+  ${MediaQueries("mobileM")`
+  font-size: var(--font-size);
+  `}// ${MediaQueries("mobileSM")`
+  // font-size: var(--font-size);
+  // `}
 `;
 
 export const Header = styled(motion.h5)`
@@ -326,6 +356,19 @@ export const GridTwo = styled.div`
   `}
 `;
 
+export const CardGridTwo = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column-gap: 20px;
+  width: ${(props) => props.theme.width100};
+  ${MediaQueries("laptop")`
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  `}
+  ${MediaQueries("mobileL")`
+   padding: 5px 0 0 0;
+  `}
+`;
+
 export const NavGridThree = styled(GridTwo)`
   // create a smaller grid size for last grid
   grid-template-columns: repeat(2, 1fr) 85px;
@@ -348,10 +391,19 @@ export const VowsSection = styled(motion.section)`
 `;
 export const VowsSectionGrid = styled(GridTwo)`
   grid-template-rows: 500px;
-  overflow: hidden;
   padding: 0px;
+
+  ${MediaQueries("laptop")`
+margin-left:185px;
+  `}
+
+  ${MediaQueries("tablet")`
+  margin-left:130px;
+  `}
+
   ${MediaQueries("mobileM")`
   grid-template-rows: 535px;
+  margin-left:85px;
   `}
 `;
 
@@ -366,7 +418,7 @@ export const VowSectionSpan = styled.span`
 export const VowSectionImage = styled.img`
   position: relative;
   bottom: ${(props) => props.theme.bottom};
-  width: 500px;
+  width: 450px;
 
   ${MediaQueries("laptop")`
   display: flex;
@@ -430,17 +482,21 @@ export const GallerySectionGrid = styled(VowsSectionGrid)`
 `;
 export const GallerySectionImage = styled(VowSectionImage)`
   left: 50px;
+  top: 25px;
+  border-radius: 10px;
+  width: 400px;
   ${MediaQueries("laptop")`
-  top:30px;
+  top:-37px;
   left:0;
-  `}
+  `};
   ${MediaQueries("mobileL")`
   width:352px;
-  margin-right:41px;
-  `} 
-  ${MediaQueries("mobileM")`
+  top: -37px;
+  left: -75px;
+
+  `} ${MediaQueries("mobileM")`
   width:317px;
-  `}
+  `};
 `;
 
 // WeddingLocations
@@ -457,6 +513,7 @@ export const WeddingLocationGrid = styled(VowsSectionGrid)`
 export const WeddingSectionImage = styled(VowSectionImage)`
   ${MediaQueries("laptop")`
 width:450px;
+
 `}
   ${MediaQueries("mobileL")`
 width:352px;
@@ -471,6 +528,9 @@ width:317px;
 
 export const CardSection = styled.section`
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 `;
 
 export const CardImage = styled.img`
@@ -478,6 +538,15 @@ export const CardImage = styled.img`
   width: 100%;
   object-fit: cover;
   height: 350px;
+`;
+
+export const CardUserLink = styled.a`
+  position: relative;
+  bottom: ${(props) => props.theme.bottom};
+  align-self: center;
+  justify-content: center;
+  display: flex;
+  color: ${(props) => props.theme.color};
 `;
 
 //Form
