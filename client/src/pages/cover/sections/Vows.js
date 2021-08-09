@@ -37,18 +37,28 @@ function Vows() {
       ref={ref}
       variants={opacityVariants}
     >
-      <Container>
-        <ThemeProvider theme={theme}>
+      {" "}
+      <ThemeProvider theme={theme}>
+        <Container>
           <VowsSectionGrid>
-            <MiddleFlexDisplayed theme={{ width50: "95%", height100: "50vh" }}>
+            <MiddleFlexDisplayed
+              theme={{
+                width50: "95%",
+                height100: "50vh",
+                flexDirection: "column",
+              }}
+            >
               <VowSectionImage src={wedding} alt='wedding' />
             </MiddleFlexDisplayed>
 
-            <MiddleFlexDisplayed theme={{ height100: "50vh" }}>
+            <MiddleFlexDisplayed
+              theme={{ height100: "50vh", marginTop: "200px" }}
+            >
               <Header
                 theme={{
                   headerMain: "var(--primary-color)",
                   fontSizeXLG: "var(--font-size-lg)",
+                  flexDirection: "column",
                 }}
               >
                 Never forget your vows.
@@ -56,7 +66,9 @@ function Vows() {
             </MiddleFlexDisplayed>
           </VowsSectionGrid>
           <VowsSectionGrid>
-            <MiddleFlexDisplayed theme={{ width50: "76%", height100: "50vh" }}>
+            <MiddleFlexDisplayed
+              theme={{ width50: "76%", height100: "50vh", marginTop: "150px" }}
+            >
               <Header
                 theme={{
                   headerMain: "var(--primary-color)",
@@ -66,8 +78,10 @@ function Vows() {
                 Also, the real reason why you both said
                 <VowSectionSpan> “I do”</VowSectionSpan>.
               </Header>
-            </MiddleFlexDisplayed>{" "}
-            <MiddleFlexDisplayed theme={{ height100: "30vh" }}>
+            </MiddleFlexDisplayed>
+            <MiddleFlexDisplayed
+              theme={{ height100: "55vh", flexDirection: "column" }}
+            >
               <VowSectionImage
                 src={love}
                 alt='love'
@@ -75,8 +89,8 @@ function Vows() {
               />
             </MiddleFlexDisplayed>
           </VowsSectionGrid>
-        </ThemeProvider>
-      </Container>
+        </Container>
+      </ThemeProvider>
     </VowsSection>
   );
 }
