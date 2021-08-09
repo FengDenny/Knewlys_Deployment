@@ -18,6 +18,8 @@ import { useInView } from "react-intersection-observer";
 import {
   fadeUpVariants,
   fadeDownVariants,
+  leftVariants,
+  rightVariants,
 } from "../../../framer-motion/variants/variants";
 
 function WeddingLocations() {
@@ -39,14 +41,22 @@ function WeddingLocations() {
           <WeddingMotion initial='hidden' animate={controls} ref={ref}>
             <WeddingLocationGrid>
               <MiddleFlexDisplayed
-                theme={{ width50: "95%", height100: "50vh" }}
-                variants={fadeDownVariants}
+                theme={{
+                  width50: "95%",
+                  height100: "50vh",
+                  flexDirection: "column",
+                }}
+                variants={fadeUpVariants}
               >
                 <WeddingSectionImage src={locationMap} alt='wedding' />
               </MiddleFlexDisplayed>
               <MediaFlexDisplay
-                theme={{ width50: "95%", height100: "50vh" }}
-                variants={fadeUpVariants}
+                theme={{
+                  width50: "95%",
+                  height100: "50vh",
+                  flexDirection: "column",
+                }}
+                variants={fadeDownVariants}
               >
                 <Header
                   theme={{
