@@ -98,6 +98,15 @@ export const theme = {
 export const Section = styled.section`
   margin-top: 200px;
   height: ${(props) => props.theme.height100};
+  ${MediaQueries("tablet")`
+  margin-top: 0;
+`};
+`;
+
+export const WeddingSection = styled(Section)`
+  ${MediaQueries("tablet")`
+  margin-top: 200px;
+`};
 `;
 
 export const Span = styled.span`
@@ -118,6 +127,7 @@ font-size: var(--font-size-lg);
   ${MediaQueries("tablet")`
 font-size: var(--font-size-24);
 `}
+
 
 ${MediaQueries("mobileM")`
 font-size: var(--font-size);
@@ -146,10 +156,12 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   ${MediaQueries("laptop")`
   height: 30vh;
   width:46%;
-  `} ${MediaQueries("mobileL")`
+  `};
+  ${MediaQueries("mobileL")`
   height:15vh;
   width:78%;
-  `} ${MediaQueries("mobileM")`
+  `};
+  ${MediaQueries("mobileM")`
   height:21vh;
   width:78%;
   `};
@@ -220,10 +232,12 @@ export const Header = styled(motion.h5)`
   `}
   ${MediaQueries("tablet")`
   font-size: var(--font-size-24);
+
   `}
   
   ${MediaQueries("mobileM")`
   font-size: var(--font-size);
+  width:100%;
   `}
 `;
 
@@ -270,10 +284,10 @@ export const ParagraphWidth = styled(Paragraph)`
   margin-left: ${(props) => props.theme.marginLeft};
 
   ${MediaQueries("mobileL")`
-  width:359px;
+  width: 303px;;
   `}
   ${MediaQueries("mobileM")`
-  width:326px;
+  width:304px;
   `}
 `;
 
@@ -398,12 +412,16 @@ margin-left:185px;
   `}
 
   ${MediaQueries("tablet")`
-  margin-left:130px;
+  margin-left:162px;
+  `}
+  
+  ${MediaQueries("mobileL")`
+  margin-left:33px;
   `}
 
   ${MediaQueries("mobileM")`
   grid-template-rows: 535px;
-  margin-left:85px;
+  margin-left:21px;
   `}
 `;
 
@@ -413,6 +431,24 @@ export const VowSectionSpan = styled.span`
   ${MediaQueries("tablet")`
   font-size: 40px;
   `}
+  ${MediaQueries("mobileL")`
+  font-size: 29px;
+  `}
+`;
+
+export const VowHeader = styled(Header)`
+  ${MediaQueries("tablet")`
+  bottom:332px;
+`}
+
+  ${MediaQueries("mobileL")`
+font-size: var(--font-size);
+bottom:405px;
+`} 
+
+  ${MediaQueries("mobileM")`
+font-size: var(--font-size);
+`}
 `;
 
 export const VowSectionImage = styled.img`
@@ -424,13 +460,29 @@ export const VowSectionImage = styled.img`
   display: flex;
     justify-content: center;
     align-self: center;
-  `}
+  `};
 
   ${MediaQueries("mobileL")`
-  width:  358px;
-  `} 
+  width:  350px;
+  margin-top:150px
+  `};
   ${MediaQueries("mobileM")`
-  width:  323px;
+  width:  278px;
+  `}
+`;
+
+export const VowSectionImageTwo = styled(VowSectionImage)`
+  ${MediaQueries("tablet")`
+  bottom:450px;
+`};
+
+  ${MediaQueries("mobileL")`
+  width:  350px;
+ margin-top:0
+  `};
+  ${MediaQueries("mobileM")`
+  width:  278px;
+  bottom:610px;
   `}
 `;
 
@@ -473,12 +525,23 @@ export const GallerySectionGrid = styled(VowsSectionGrid)`
   grid-template-rows: 600px;
 
   ${MediaQueries("laptop")`
-  grid-template-rows: 350px;
-`}
+margin-left:185px;
+grid-template-rows: 350px;
+  `}
 
+  ${MediaQueries("tablet")`
+  margin-left:162px;
+  `}
+  
   ${MediaQueries("mobileL")`
+  margin-left:113px;
   grid-template-rows: 250px;
-`}
+  `}
+
+  ${MediaQueries("mobileM")`
+  grid-template-rows: 535px;
+  margin-left:85px;
+  `}
 `;
 export const GallerySectionImage = styled(VowSectionImage)`
   left: 50px;
@@ -491,12 +554,28 @@ export const GallerySectionImage = styled(VowSectionImage)`
   `};
   ${MediaQueries("mobileL")`
   width:352px;
-  top: -37px;
+  top: -99px;
   left: -75px;
 
-  `} ${MediaQueries("mobileM")`
-  width:317px;
   `};
+  ${MediaQueries("mobileM")`
+  width:300px;
+  top: -386px;
+  left: -60px;
+  `};
+`;
+
+export const GalleryHeader = styled(Header)`
+  ${MediaQueries("laptop")`
+font-size: var(--font-size);
+`};
+`;
+
+export const GallerySectionHeader = styled(SectionHeader)`
+  ${MediaQueries("mobileM")`
+top: 46px;
+right: 90px;
+`};
 `;
 
 // WeddingLocations
@@ -510,17 +589,27 @@ export const WeddingLocationGrid = styled(VowsSectionGrid)`
   `}
 `;
 
+export const WeddingLocationDescription = styled.div`
+  ${MediaQueries("mobileL")`
+  position: relative;
+  left: 10px;
+`}
+  ${MediaQueries("mobileM")`
+width:317px;
+left: -18px;
+`}
+`;
+
 export const WeddingSectionImage = styled(VowSectionImage)`
   ${MediaQueries("laptop")`
 width:450px;
-
 `}
   ${MediaQueries("mobileL")`
 width:352px;
-margin-right:50px;
+margin-right:3px;
 `} 
 ${MediaQueries("mobileM")`
-width:317px;
+width:300px;
 `}
 `;
 
