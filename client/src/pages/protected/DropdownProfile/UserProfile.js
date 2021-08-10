@@ -32,7 +32,7 @@ function UserProfile() {
           theme={{
             flexDirection: "column",
             alignItems: "center",
-            height100: "60vh",
+            height100: "100vh",
           }}
         >
           <Header
