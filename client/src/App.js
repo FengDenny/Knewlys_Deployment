@@ -20,7 +20,7 @@ import "./account.css";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { auth } = useSelector((state) => ({ ...state }));
+  const { auth, footer } = useSelector((state) => ({ ...state }));
 
   return (
     <>
@@ -92,9 +92,9 @@ function App() {
             </Switch>
           </AppContent>
           {/* show footer content iff user is authenticated */}
-          {/* {auth._id && auth.email && <Footer />} */}
-
-          <Footer />
+          {!auth._id && !auth.email && <Footer />}
+          {/* if footer = false show footer else null*/}
+          {!footer ? <Footer /> : null}
         </AppWrapper>
       </Router>
     </>
