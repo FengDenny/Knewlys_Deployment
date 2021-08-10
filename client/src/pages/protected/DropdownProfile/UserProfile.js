@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   MiddleFlexDisplayed,
   Container,
@@ -7,15 +7,34 @@ import {
   Span,
 } from "../../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setFooter } from "../../../redux/actions/footerAction";
+
 function UserProfile() {
   const { auth } = useSelector((state) => ({ ...state }));
   const beforeAt = auth.createdAt.split("T");
+  const [noFooter, setNoFooter] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    checkFooter();
+  }, []);
+
+  const checkFooter = () => {
+    setNoFooter(false);
+    dispatch(setFooter(noFooter));
+  };
 
   return (
     <Container>
       <ThemeProvider theme={theme}>
-        <MiddleFlexDisplayed>
+        <MiddleFlexDisplayed
+          theme={{
+            flexDirection: "column",
+            alignItems: "center",
+            height100: "60vh",
+          }}
+        >
           <Header
             theme={{
               headerMain: "var(--secondary-color)",
@@ -50,7 +69,7 @@ function UserProfile() {
               {beforeAt[0]}
             </Span>
           </Header>
-        </MiddleFlexDisplayed>{" "}
+        </MiddleFlexDisplayed>
       </ThemeProvider>
     </Container>
   );
