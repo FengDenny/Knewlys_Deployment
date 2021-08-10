@@ -3,16 +3,15 @@ import gallery from "../../../images/Gallery.png";
 import {
   Section,
   theme,
-  Header,
   GallerySectionGrid,
   MiddleFlexDisplayed,
   Container,
   ParagraphWidth,
   GallerySectionImage,
   GalleryBG,
-  MediaFlexDisplay,
   GalleryFlexDisplay,
-  SectionHeader,
+  GalleryHeader,
+  GallerySectionHeader,
 } from "../../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 import { useAnimation } from "framer-motion";
@@ -49,8 +48,8 @@ function Gallery() {
                 }}
                 variants={leftVariants}
               >
-                <SectionHeader>
-                  <Header
+                <GallerySectionHeader>
+                  <GalleryHeader
                     theme={{
                       headerMain: "var(--white-color)",
                       fontSizeXLG: "var(--font-size-48)",
@@ -59,7 +58,7 @@ function Gallery() {
                     }}
                   >
                     Your greatest moments in single gallery.
-                  </Header>
+                  </GalleryHeader>
                   <ParagraphWidth
                     theme={{
                       paragraphWidth: "434px",
@@ -72,7 +71,7 @@ function Gallery() {
                     memories to never forget the perfect past, including your
                     vows.
                   </ParagraphWidth>
-                </SectionHeader>
+                </GallerySectionHeader>
               </MiddleFlexDisplayed>
               <GalleryFlexDisplay
                 theme={{ width50: "95%", height100: "50vh" }}

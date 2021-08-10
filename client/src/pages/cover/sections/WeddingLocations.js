@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import locationMap from "../../../images/cover/location_map.svg";
 import {
-  Section,
   theme,
   Header,
   WeddingLocationGrid,
@@ -9,7 +8,9 @@ import {
   Container,
   ParagraphWidth,
   WeddingSectionImage,
+  WeddingSection,
   WeddingMotion,
+  WeddingLocationDescription,
   MediaFlexDisplay,
 } from "../../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
@@ -36,7 +37,7 @@ function WeddingLocations() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Section>
+      <WeddingSection>
         <Container>
           <WeddingMotion initial='hidden' animate={controls} ref={ref}>
             <WeddingLocationGrid>
@@ -58,33 +59,35 @@ function WeddingLocations() {
                 }}
                 variants={fadeDownVariants}
               >
-                <Header
-                  theme={{
-                    headerMain: "var(--primary-color)",
-                    fontSizeXLG: "var(--font-size-48)",
-                    fontWeight: "bolder",
-                    width50: "100%",
-                  }}
-                >
-                  Browse weddings
-                </Header>
-                <ParagraphWidth
-                  theme={{
-                    paragraphWidth: "450px",
-                    headerMain: "var(--secondary-color)",
-                    lineHeight: "26px",
-                    padding: "7px 0 0 0",
-                  }}
-                >
-                  Ready to put a ring on it, but cannot decide a perfect venue?
-                  Knewlys got you covered! Take a look at other people galleries
-                  to see their venue location!
-                </ParagraphWidth>
+                <WeddingLocationDescription>
+                  <Header
+                    theme={{
+                      headerMain: "var(--primary-color)",
+                      fontSizeXLG: "var(--font-size-48)",
+                      fontWeight: "bolder",
+                      width50: "100%",
+                    }}
+                  >
+                    Browse weddings
+                  </Header>
+                  <ParagraphWidth
+                    theme={{
+                      paragraphWidth: "450px",
+                      headerMain: "var(--secondary-color)",
+                      lineHeight: "26px",
+                      padding: "7px 0 0 0",
+                    }}
+                  >
+                    Ready to put a ring on it, but cannot decide a perfect
+                    venue? Knewlys got you covered! Take a look at other people
+                    galleries to see their venue location!
+                  </ParagraphWidth>
+                </WeddingLocationDescription>
               </MediaFlexDisplay>
             </WeddingLocationGrid>{" "}
           </WeddingMotion>
         </Container>
-      </Section>
+      </WeddingSection>
     </ThemeProvider>
   );
 }

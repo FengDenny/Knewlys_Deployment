@@ -10,6 +10,8 @@ import {
   Container,
   VowSectionSpan,
   VowSectionImage,
+  VowSectionImageTwo,
+  VowHeader,
 } from "../../../styled-components/globalStyled";
 import { opacityVariants } from "../../../framer-motion/variants/variants";
 
@@ -37,7 +39,6 @@ function Vows() {
       ref={ref}
       variants={opacityVariants}
     >
-      {" "}
       <ThemeProvider theme={theme}>
         <Container>
           <VowsSectionGrid>
@@ -54,7 +55,7 @@ function Vows() {
             <MiddleFlexDisplayed
               theme={{ height100: "50vh", marginTop: "200px" }}
             >
-              <Header
+              <VowHeader
                 theme={{
                   headerMain: "var(--primary-color)",
                   fontSizeXLG: "var(--font-size-lg)",
@@ -62,14 +63,14 @@ function Vows() {
                 }}
               >
                 Never forget your vows.
-              </Header>
+              </VowHeader>
             </MiddleFlexDisplayed>
           </VowsSectionGrid>
           <VowsSectionGrid>
             <MiddleFlexDisplayed
               theme={{ width50: "76%", height100: "50vh", marginTop: "150px" }}
             >
-              <Header
+              <VowHeader
                 theme={{
                   headerMain: "var(--primary-color)",
                   fontSizeXLG: "var(--font-size-lg)",
@@ -77,12 +78,12 @@ function Vows() {
               >
                 Also, the real reason why you both said
                 <VowSectionSpan> “I do”</VowSectionSpan>.
-              </Header>
+              </VowHeader>
             </MiddleFlexDisplayed>
             <MiddleFlexDisplayed
-              theme={{ height100: "55vh", flexDirection: "column" }}
+              theme={{ height100: "45vh", flexDirection: "column" }}
             >
-              <VowSectionImage
+              <VowSectionImageTwo
                 src={love}
                 alt='love'
                 theme={{ bottom: "50px" }}
