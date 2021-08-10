@@ -8,13 +8,24 @@ import {
   GridTwo,
   CardImage,
   CardSection,
+  CardUserLink,
+  CardGridTwo,
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 import { Card } from "../../styled-components/styled.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { setFooter } from "../../redux/actions/footerAction";
+
+library.add(faUser);
 
 function HomeProtected() {
   const { auth } = useSelector((state) => ({ ...state }));
   const [post, setPost] = useState([]);
+  const [noFooter, setNoFooter] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadAllPost();
@@ -23,11 +34,12 @@ function HomeProtected() {
   const loadAllPost = async () => {
     let res = await getAllPosts();
     setPost(res.data);
+    setNoFooter(true);
+    dispatch(setFooter(noFooter));
   };
 
   return (
     <Container>
-      {" "}
       <ThemeProvider theme={theme}>
         <CardSection>
           <MiddleCardFlexDisplayed
@@ -38,7 +50,7 @@ function HomeProtected() {
               marginTop: "200px",
             }}
           >
-            <GridTwo theme={{ width100: "50%" }}>
+            <CardGridTwo theme={{ width100: "50%" }}>
               {post.data &&
                 post.data.map((posts) => (
                   <Card key={posts._id}>
@@ -52,9 +64,18 @@ function HomeProtected() {
                         alt='default image'
                       />
                     )}
+                    <CardUserLink
+                      href='/'
+                      theme={{
+                        bottom: "24px",
+                        color: "var(--primary-color)",
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faUser} size='1x' />
+                    </CardUserLink>
                   </Card>
                 ))}
-            </GridTwo>
+            </CardGridTwo>
           </MiddleCardFlexDisplayed>
         </CardSection>
       </ThemeProvider>
