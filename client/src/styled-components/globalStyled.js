@@ -16,10 +16,9 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background:var(--white-color);
+  
 
 }
-
-
 
 a {
     list-style-type: none;
@@ -152,7 +151,6 @@ export const MiddleFlexDisplayed = styled(motion.div)`
   height: ${(props) => props.theme.height100};
   margin-top: ${(props) => props.theme.marginTop};
   width: ${(props) => props.theme.width50};
-  height: ${(props) => props.theme.height};
   ${MediaQueries("laptop")`
   height: 30vh;
   width:46%;
