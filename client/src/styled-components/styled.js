@@ -61,7 +61,9 @@ export const VideoContainer = styled.div`
   `}
    ${MediaQueries("mobileM")`
     height:26vh;
-    
+    &:after {
+      height: 82%;
+    }
   `}
 `;
 export const Video = styled(VideoContainer)`
@@ -102,7 +104,10 @@ export const VideoSection = styled.div`
 
   ${MediaQueries("mobileL")`
   width: 286px;
-`}
+`};
+  ${MediaQueries("mobileM")`
+top: 40%;
+`};
 `;
 export const StyledModal = Modal.styled`
 
