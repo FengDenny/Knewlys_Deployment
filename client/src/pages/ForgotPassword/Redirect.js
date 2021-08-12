@@ -14,7 +14,7 @@ import {
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 
-function Redirect() {
+function Redirect({ setActive }) {
   const { switchToSignin } = useContext(AccountContext);
   const { reset } = useSelector((state) => ({ ...state }));
   return (
@@ -53,7 +53,9 @@ function Redirect() {
           >
             Didn’t receive the email yet?
             <FormLink
-              onClick={switchToSignin}
+              onClick={() => {
+                switchToSignin(setActive);
+              }}
               theme={{
                 textDecoration: "none",
                 marginLeft: "5px",
