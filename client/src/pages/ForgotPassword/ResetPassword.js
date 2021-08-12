@@ -10,6 +10,7 @@ import {
   FormInput,
   FormLabel,
   HeaderStart,
+  MiddleFlexHeight,
 } from "../../styled-components/globalStyled";
 
 import { ThemeProvider } from "styled-components";
@@ -43,7 +44,13 @@ function ResetPassword({ match }) {
   return (
     <Container>
       <ThemeProvider theme={theme}>
-        <MiddleFlexDisplayed theme={{ alignItems: "center" }}>
+        <MiddleFlexHeight
+          theme={{
+            alignItems: "center",
+            flexDirection: "column",
+            height: "70vh",
+          }}
+        >
           <HeaderStart
             theme={{
               modalHeader: "var(--form-header-color)",
@@ -71,13 +78,13 @@ function ResetPassword({ match }) {
           <FormGroup>
             <FormSubmitButton
               green
-              theme={{ buttonWdith: "360px" }}
+              theme={{ buttonWidth: "360px" }}
               onClick={resetPassword}
             >
               Reset Password
             </FormSubmitButton>
           </FormGroup>
-        </MiddleFlexDisplayed>
+        </MiddleFlexHeight>
       </ThemeProvider>
     </Container>
   );
