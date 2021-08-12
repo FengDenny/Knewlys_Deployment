@@ -6,7 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserLoggedOut } from "../../redux/actions/authAction";
 import { ThemeProvider } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  openModal,
+  closeModal,
+  beforeClose,
+  afterOpen,
+} from "../../components/modal/modal";
 import {
   Container,
   NavGridThree,
@@ -54,28 +61,6 @@ function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [active, setActive] = useState("post");
   const [opacity, setOpacity] = useState(0);
-
-  const openModal = () => {
-    setOpacity(0);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  const afterOpen = () => {
-    setTimeout(() => {
-      setOpacity(1);
-    }, 100);
-  };
-
-  const beforeClose = () => {
-    return new Promise((resolve) => {
-      setOpacity(0);
-      setTimeout(resolve, 200);
-    });
-  };
 
   // scrollevent
   const [navSize, setNavSize] = useState("8rem");
@@ -177,6 +162,8 @@ function Navbar() {
                 HRLine={HRLine}
                 faUser={faUser}
                 faHeart={faHeart}
+                setModalOpen={setModalOpen}
+                setOpacity={setOpacity}
                 faPlusSquare={faPlusSquare}
                 faSignOutAlt={faSignOutAlt}
                 beforeAt={beforeAt}
