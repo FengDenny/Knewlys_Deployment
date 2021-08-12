@@ -371,7 +371,7 @@ export const GridTwo = styled.div`
 export const CardGridTwo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-column-gap: 20px;
+  grid-column-gap: 10px;
   width: ${(props) => props.theme.width100};
   ${MediaQueries("laptop")`
   grid-template-columns: repeat(1, minmax(0, 1fr));
