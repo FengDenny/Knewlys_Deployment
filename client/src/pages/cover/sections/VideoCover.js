@@ -26,6 +26,12 @@ import ForgotPassword from "../../auth/ForgotPassword";
 import BounceScrollDownArrow from "../components/BounceScrollDownArrow";
 import Redirect from "../../ForgotPassword/Redirect";
 import { AccountContext } from "../../../components/accountContext";
+import {
+  openModal,
+  closeModal,
+  beforeClose,
+  afterOpen,
+} from "../../../components/modal/modal";
 
 function VideoCover() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -63,28 +69,6 @@ function VideoCover() {
     switchToRedirect,
   };
 
-  const openModal = () => {
-    setOpacity(0);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  const afterOpen = () => {
-    setTimeout(() => {
-      setOpacity(1);
-    }, 100);
-  };
-
-  const beforeClose = () => {
-    return new Promise((resolve) => {
-      setOpacity(0);
-      setTimeout(resolve, 200);
-    });
-  };
-
   return (
     <AccountContext.Provider value={contextValue}>
       {smoothScrolling()}
@@ -112,7 +96,7 @@ function VideoCover() {
             <GridTwo>
               <Button
                 onClick={() => {
-                  openModal();
+                  openModal({ setModalOpen, setOpacity });
                   setActive("signup");
                 }}
                 primary
@@ -121,7 +105,7 @@ function VideoCover() {
               </Button>
               <Button
                 onClick={() => {
-                  openModal();
+                  openModal({ setModalOpen, setOpacity });
                   setActive("signin");
                 }}
                 secondary
@@ -137,12 +121,20 @@ function VideoCover() {
       </VideoContainer>{" "}
       <StyledModal
         isOpen={modalOpen}
-        afterOpen={afterOpen}
+        afterOpen={afterOpen({ setOpacity })}
         beforeClose={beforeClose}
-        onBackgroundClick={closeModal}
+        onBackgroundClick={() => {
+          closeModal(setModalOpen);
+        }}
         backgroundProps={{ opacity }}
       >
-        <StyledCloseModal onClick={closeModal}>&times;</StyledCloseModal>
+        <StyledCloseModal
+          onClick={() => {
+            closeModal(setModalOpen);
+          }}
+        >
+          &times;
+        </StyledCloseModal>
 
         {active === "signup" && <SignUp />}
         {active === "signin" && <SignIn />}
