@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserLoggedIn } from "../../redux/actions/authAction";
 
-function Signin() {
+function Signin({ setActive }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
@@ -93,6 +93,7 @@ function Signin() {
           setPassword={setPassword}
           emailError={emailError}
           passwordError={passwordError}
+          setActive={setActive}
         />
       </ThemeProvider>
     </Container>

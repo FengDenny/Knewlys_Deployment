@@ -24,6 +24,7 @@ function SignInForm({
   password,
   setPassword,
   passwordError,
+  setActive,
 }) {
   const { switchToSignup, switchToForgotPassword } = useContext(AccountContext);
   return (
@@ -51,7 +52,11 @@ function SignInForm({
         <FormGroup>
           <GridTwo>
             <FormLabel htmlFor='password'>Password</FormLabel>
-            <ForgotPasswordLink onClick={switchToForgotPassword}>
+            <ForgotPasswordLink
+              onClick={() => {
+                switchToForgotPassword(setActive);
+              }}
+            >
               Forgot password?
             </ForgotPasswordLink>
           </GridTwo>
@@ -90,7 +95,11 @@ function SignInForm({
         <FormGroup>
           <FormSwitch theme={{ headerMain: "var(--secondary-color)" }}>
             Need an account?{" "}
-            <FormLinkSwitch onClick={switchToSignup}>
+            <FormLinkSwitch
+              onClick={() => {
+                switchToSignup(setActive);
+              }}
+            >
               Sign Up Free
             </FormLinkSwitch>
           </FormSwitch>

@@ -23,6 +23,7 @@ function SignUpForm({
   setPassword,
   emailError,
   passwordError,
+  setActive,
 }) {
   const { switchToSignin } = useContext(AccountContext);
 
@@ -84,14 +85,22 @@ function SignUpForm({
         <FormButton
           disabled={!email || !password}
           primary
-          onClick={switchToSignin}
+          onClick={() => {
+            switchToSignin(setActive);
+          }}
         >
           Sign Up
         </FormButton>
         <FormGroup>
           <FormSwitch theme={{ headerMain: "var(--secondary-color)" }}>
             Have an account?
-            <FormLinkSwitch onClick={switchToSignin}>Sign in</FormLinkSwitch>
+            <FormLinkSwitch
+              onClick={() => {
+                switchToSignin(setActive);
+              }}
+            >
+              Sign in
+            </FormLinkSwitch>
           </FormSwitch>
         </FormGroup>
       </ThemeProvider>

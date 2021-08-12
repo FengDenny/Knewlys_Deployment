@@ -13,7 +13,7 @@ import {
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 
-function ForgotPassword() {
+function ForgotPassword({ setActive }) {
   const [email, setEmail] = useState("");
   const { switchToRedirect } = useContext(AccountContext);
   const dispatch = useDispatch();
@@ -63,6 +63,7 @@ function ForgotPassword() {
             resetAccount={resetAccount}
             email={email}
             switchToRedirect={switchToRedirect}
+            setActive={setActive}
           />
         </MiddleFlexHeight>
       </ThemeProvider>

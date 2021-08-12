@@ -8,7 +8,7 @@ import {
 import { ThemeProvider } from "styled-components";
 import axios from "axios";
 
-function Signup() {
+function Signup({ setActive }) {
   // Dfeng6@mail.ccsf.edu
   const [email, setEmail] = useState("");
   // 123456aA!
@@ -85,6 +85,7 @@ function Signup() {
         setPassword={setPassword}
         emailError={emailError}
         passwordError={passwordError}
+        setActive={setActive}
       />
     </Container>
   );
