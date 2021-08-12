@@ -19,6 +19,8 @@ function DropdownProfile({
   openModal,
   setActive,
   modalOpen,
+  setOpacity,
+  setModalOpen,
   active,
   opacity,
   closeModal,
@@ -96,7 +98,7 @@ function DropdownProfile({
       <DropdownPadding>
         <DropdownButton
           onClick={() => {
-            openModal();
+            openModal({ setModalOpen, setOpacity });
             setActive("post");
           }}
         >
@@ -123,12 +125,20 @@ function DropdownProfile({
       </DropdownPadding>
       <StyledModal
         isOpen={modalOpen}
-        afterOpen={afterOpen}
+        afterOpen={afterOpen({ setOpacity })}
         beforeClose={beforeClose}
-        onBackgroundClick={closeModal}
+        onBackgroundClick={() => {
+          closeModal(setModalOpen);
+        }}
         backgroundProps={{ opacity }}
       >
-        <StyledCloseModal onClick={closeModal}>&times;</StyledCloseModal>
+        <StyledCloseModal
+          onClick={() => {
+            closeModal(setModalOpen);
+          }}
+        >
+          &times;
+        </StyledCloseModal>
         {active === "post" && <Post />}
       </StyledModal>
     </DropdownContent>
