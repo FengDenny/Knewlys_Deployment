@@ -14,13 +14,8 @@ import {
 
 import { ThemeProvider } from "styled-components";
 
-function ForgotPasswordForm({
-  submitReset,
-  resetAccount,
-  email,
-  switchToRedirect,
-}) {
-  const { switchToSignup } = useContext(AccountContext);
+function ForgotPasswordForm({ submitReset, resetAccount, email, setActive }) {
+  const { switchToSignin, switchToRedirect } = useContext(AccountContext);
   return (
     <FormContainer onSubmit={submitReset}>
       <ThemeProvider theme={theme}>
@@ -35,7 +30,12 @@ function ForgotPasswordForm({
           />
         </FormGroup>
         <FormGroup theme={{ marginLeft: "20px" }}>
-          <FormButton primary onClick={switchToRedirect}>
+          <FormButton
+            primary
+            onClick={() => {
+              switchToRedirect(setActive);
+            }}
+          >
             Send
           </FormButton>
         </FormGroup>
@@ -48,7 +48,9 @@ function ForgotPasswordForm({
           >
             Don't need a reset?
             <FormLinkSwitch
-              onClick={switchToSignup}
+              onClick={() => {
+                switchToSignin(setActive);
+              }}
               theme={{ marginTop: "1px", marginLeft: "2px" }}
             >
               Sign in
