@@ -31,43 +31,13 @@ import {
   closeModal,
   beforeClose,
   afterOpen,
+  contextValue,
 } from "../../../components/modal/modal";
 
 function VideoCover() {
   const [modalOpen, setModalOpen] = useState(false);
   const [active, setActive] = useState("signup");
   const [opacity, setOpacity] = useState(0);
-
-  const switchToSignup = () => {
-    setTimeout(() => {
-      setActive("signup");
-    }, 200);
-  };
-
-  const switchToSignin = () => {
-    setTimeout(() => {
-      setActive("signin");
-    }, 200);
-  };
-
-  const switchToForgotPassword = () => {
-    setTimeout(() => {
-      setActive("forgot");
-    }, 200);
-  };
-
-  const switchToRedirect = () => {
-    setTimeout(() => {
-      setActive("redirect");
-    }, 200);
-  };
-
-  const contextValue = {
-    switchToSignup,
-    switchToSignin,
-    switchToForgotPassword,
-    switchToRedirect,
-  };
 
   return (
     <AccountContext.Provider value={contextValue}>
@@ -136,10 +106,10 @@ function VideoCover() {
           &times;
         </StyledCloseModal>
 
-        {active === "signup" && <SignUp />}
-        {active === "signin" && <SignIn />}
-        {active === "forgot" && <ForgotPassword />}
-        {active === "redirect" && <Redirect />}
+        {active === "signup" && <SignUp setActive={setActive} />}
+        {active === "signin" && <SignIn setActive={setActive} />}
+        {active === "forgot" && <ForgotPassword setActive={setActive} />}
+        {active === "redirect" && <Redirect setActive={setActive} />}
       </StyledModal>
     </AccountContext.Provider>
   );
