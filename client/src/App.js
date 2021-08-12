@@ -73,9 +73,11 @@ function App() {
                     exact
                     path='/'
                     render={(props) => (
-                      <Page title='Knewlys | Newlyweds Photos Gallery & Inspirational Weddings'>
-                        <HomeProtected {...props} />
-                      </Page>
+                      <ModalProvider backgroundComponent={FadingBackground}>
+                        <Page title='Knewlys | Newlyweds Photos Gallery & Inspirational Weddings'>
+                          <HomeProtected {...props} />
+                        </Page>
+                      </ModalProvider>
                     )}
                   />
                   <PrivateRoute
