@@ -10,6 +10,7 @@ const {
   updatePost,
   deletePost,
   getImages,
+  getSinglePost,
 } = require("./../controllers/postController");
 const { protect, protected } = require("./../controllers/authController");
 const {
@@ -26,6 +27,11 @@ router.get("/post", getPost);
 // @route GET /api/v1/photo/:id
 // @access Public
 router.get("/post/photo/:id", getImages);
+
+// @desc Get post info
+// @route GET /api/v1/post/:postID
+// @access Public
+router.get("/post/:postID", getSinglePost);
 
 // Protect all routes after this middleware
 router.use(protect);
