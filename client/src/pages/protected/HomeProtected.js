@@ -5,12 +5,19 @@ import {
   Container,
   theme,
   MiddleCardFlexDisplayed,
-  GridTwo,
   CardImage,
   CardSection,
-  CardUserLink,
+  CardUserButton,
   CardGridTwo,
+  DropdownButton,
 } from "../../styled-components/globalStyled";
+import {
+  openModal,
+  closeModal,
+  beforeClose,
+  afterOpen,
+} from "../../components/modal/modal";
+import { StyledModal, StyledCloseModal } from "../../styled-components/styled";
 import { ThemeProvider } from "styled-components";
 import { Card } from "../../styled-components/styled.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +25,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { setFooter } from "../../redux/actions/footerAction";
+import { setPostID } from "../../redux/actions/postAction";
+import PostInfo from "./PostInfo";
 
 library.add(faUser);
 
@@ -25,6 +34,9 @@ function HomeProtected() {
   const { auth } = useSelector((state) => ({ ...state }));
   const [post, setPost] = useState([]);
   const [noFooter, setNoFooter] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [active, setActive] = useState("postInfo");
+  const [opacity, setOpacity] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,7 +67,23 @@ function HomeProtected() {
                 post.data.map((posts) => (
                   <Card key={posts._id}>
                     {posts.photo && posts.photo.contentType ? (
-                      <CardImage src={`/api/v1/post/photo/${posts._id}`} />
+                      <>
+                        <CardImage src={`/api/v1/post/photo/${posts._id}`} />
+                        <CardUserButton
+                          onClick={() => {
+                            openModal({ setModalOpen, setOpacity });
+                            setActive("postInfo");
+                            dispatch(setPostID(posts._id));
+                          }}
+                          theme={{
+                            bottom: "30px",
+                            color: "var(--primary-color)",
+                            left: "50%",
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faUser} size='1x' />
+                        </CardUserButton>
+                      </>
                     ) : (
                       <CardImage
                         src={
@@ -64,21 +92,23 @@ function HomeProtected() {
                         alt='default image'
                       />
                     )}
-                    <CardUserLink
-                      href='/'
-                      theme={{
-                        bottom: "24px",
-                        color: "var(--primary-color)",
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faUser} size='1x' />
-                    </CardUserLink>
                   </Card>
                 ))}
             </CardGridTwo>
           </MiddleCardFlexDisplayed>
         </CardSection>
       </ThemeProvider>
+      <StyledModal
+        isOpen={modalOpen}
+        afterOpen={afterOpen({ setOpacity })}
+        beforeClose={beforeClose}
+        onBackgroundClick={() => {
+          closeModal(setModalOpen);
+        }}
+        backgroundProps={{ opacity }}
+      >
+        {active === "postInfo" && <PostInfo />}
+      </StyledModal>
     </Container>
   );
 }
