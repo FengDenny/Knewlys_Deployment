@@ -6,7 +6,8 @@ const CatchAsync = require("../utility/CatchAsync");
 const AppError = require("../utility/AppError");
 const {
   getAll,
-  getAllImages,
+  getPostImage,
+  getOnePost,
   getOne,
   updateOne,
   deleteOne,
@@ -135,5 +136,10 @@ exports.getPost = getAll(
   "postedBy",
   "_id email createdAt"
 );
-
-exports.getImages = getAllImages(Post);
+exports.getSinglePost = getOnePost(
+  Post,
+  "_id title body created photo.contentType",
+  "postedBy",
+  "_id email createdAt"
+);
+exports.getImages = getPostImage(Post);
