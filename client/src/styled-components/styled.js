@@ -128,6 +128,7 @@ export const StyledCloseModal = styled.span`
   font-size: 37px;
   color: var(--secondary-color);
   cursor: pointer;
+  z-index: 100;
 `;
 
 export const FadingBackground = styled(BaseModalBackground)`
