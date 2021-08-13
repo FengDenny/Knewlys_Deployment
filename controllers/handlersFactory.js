@@ -24,7 +24,7 @@ exports.getAll = (Model, select, populates, popSelect) =>
     });
   });
 
-exports.getAllImages = (Model) =>
+exports.getPostImage = (Model) =>
   CatchAsync(async (req, res, next) => {
     let query = Model.findById(req.params.id);
     const doc = await query;
@@ -33,6 +33,21 @@ exports.getAllImages = (Model) =>
     } else if (doc && doc.photo && doc.photo.data !== null) {
       res.set("Content-Type", doc.photo.contentType);
       return res.send(doc.photo.data);
+    }
+  });
+
+exports.getOnePost = (Model, select, populates, popSelect) =>
+  CatchAsync(async (req, res, next) => {
+    let query = Model.findById(req.params.postID).select(select);
+    if (populates) query = query.populate(populates, popSelect);
+    const doc = await query;
+    if (!doc) {
+      return next(new AppError(`No document found with that ID.`, 404));
+    } else if (doc) {
+      res.status(200).json({
+        status: "success",
+        data: doc,
+      });
     }
   });
 
