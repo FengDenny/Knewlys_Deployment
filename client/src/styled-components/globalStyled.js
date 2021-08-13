@@ -239,6 +239,23 @@ export const Header = styled(motion.h5)`
   `}
 `;
 
+export const HeaderBottomPostion = styled(Header)`
+  bottom: ${(props) => props.theme.bottom};
+  left: ${(props) => props.theme.left};
+  ${MediaQueries("laptop")`
+  font-size: var(--font-size-sm);
+
+  `}
+  ${MediaQueries("tablet")`
+  font-size: var(--font-size-xsm);
+
+  `}
+  
+  ${MediaQueries("mobileM")`
+  font-size: var(--font-size-xsm);
+  `}
+`;
+
 export const MidHeader = styled.h3`
   font-family: var(--primary-font);
   //   change the color theme with props
@@ -612,7 +629,6 @@ width:300px;
 `;
 
 // Home protected
-
 export const CardSection = styled.section`
   height: 100vh;
   display: flex;
@@ -627,13 +643,32 @@ export const CardImage = styled.img`
   height: 350px;
 `;
 
-export const CardUserLink = styled.a`
+export const CardUserButton = styled.button`
   position: relative;
   bottom: ${(props) => props.theme.bottom};
-  align-self: center;
-  justify-content: center;
+  left: ${(props) => props.theme.left};
   display: flex;
   color: ${(props) => props.theme.color};
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+`;
+
+// PostInfo.js
+export const PostContainer = styled.div`
+  padding: 0;
+  width: 100%;
+`;
+
+export const PostImage = styled.img`
+  width: 100%;
+  position: relative;
+  bottom: 64px;
+  object-fit: cover;
+  height: 500px;
+  z-index: 1;
+  border-radius: 5px;
 `;
 
 //Form
