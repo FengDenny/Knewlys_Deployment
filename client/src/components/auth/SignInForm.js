@@ -5,7 +5,7 @@ import {
   FormLabel,
   FormInput,
   GridTwo,
-  ForgotPasswordLink,
+  ForgotPassword,
   FormContainer,
   FormParagraph,
   theme,
@@ -52,13 +52,13 @@ function SignInForm({
         <FormGroup>
           <GridTwo>
             <FormLabel htmlFor='password'>Password</FormLabel>
-            <ForgotPasswordLink
+            <ForgotPassword
               onClick={() => {
                 switchToForgotPassword(setActive);
               }}
             >
               Forgot password?
-            </ForgotPasswordLink>
+            </ForgotPassword>
           </GridTwo>
           <FormInput
             type='password'
