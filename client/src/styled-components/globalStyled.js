@@ -14,10 +14,8 @@ export const GlobalStyles = createGlobalStyle`
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
   background:var(--white-color);
-  
-
+ 
 }
 
 a {
@@ -512,6 +510,7 @@ export const GalleryBG = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 70vh;
+  overflow: hidden;
   &::before {
     content: "";
     position: absolute;
@@ -878,7 +877,7 @@ export const NavAuthSpan = styled.span`
 
 export const NavLogoutBtn = styled.button`
   border-radius: 5px;
-  width: 146px;
+  width: 184px;
   height: 29px;
   color: var(--white-color);
   background: none;
@@ -908,7 +907,7 @@ export const DropdownContent = styled.div`
   display: none;
   position: absolute;
   background-color: var(--white-color);
-  min-width: 180px;
+  min-width: 220px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0, 2);
   padding: 12px 16px;
   z-index: 1;
@@ -930,6 +929,7 @@ export const FooterDisplay = styled.footer`
   background: var(--gradient-primary);
   color: var(--white-color);
   height: ${(props) => props.theme.height};
+  width: 100%;
 `;
 
 export const FooterHeader = styled(Header)`
