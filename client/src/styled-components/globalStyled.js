@@ -168,7 +168,12 @@ export const MiddleFlexDisplayed = styled(motion.div)`
 export const MiddleCardFlexDisplayed = styled(MiddleFlexDisplayed)`
   ${MediaQueries("laptop")`
   margin-top: 504px;
+  width:78%;
   `}
+
+  ${MediaQueries("mobileL")`
+  width:100%;
+  `};
 `;
 
 export const MediaFlexDisplay = styled(MiddleFlexDisplayed)`
@@ -395,6 +400,7 @@ export const CardGridTwo = styled.div`
   `}
   ${MediaQueries("mobileL")`
    padding: 5px 0 0 0;
+   width:90%;
   `}
 `;
 
@@ -745,6 +751,15 @@ export const ForgotPasswordLink = styled.a`
   margin-left: 45px;
   cursor: pointer;
 `;
+
+export const ForgotPassword = styled(ForgotPasswordLink)`
+  ${MediaQueries("laptop")` 
+  margin-top: -26px;
+  margin-left: 218px;
+
+`};
+`;
+
 export const FormLink = styled(ForgotPasswordLink)`
   margin-top: ${(props) => props.theme.marginTop};
   margin-left: ${(props) => props.theme.marginLeft};
