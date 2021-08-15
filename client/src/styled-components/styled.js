@@ -33,7 +33,7 @@ export const AppContent = styled.div`
 export const VideoContainer = styled.div`
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   // create a curve border for video
   height: 76vh;
   overflow: hidden;
