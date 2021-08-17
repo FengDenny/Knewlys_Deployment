@@ -85,6 +85,7 @@ export const theme = {
   right: "0",
   left: "0",
   top: "0",
+  position: "relative",
   fontWeight: "0",
   lineHeight: "22px",
   padding: "5px 0 0 0",
@@ -293,7 +294,9 @@ export const Paragraph = styled.p`
   font-size: var(--font-size-sm);
   color: ${(props) => props.theme.headerMain};
   padding: ${(props) => props.theme.padding};
-  position: relative;
+  position: ${(props) => props.theme.position};
+  bottom: ${(props) => props.theme.bottom};
+  right: ${(props) => props.theme.right};
 `;
 
 export const ParagraphWidth = styled(Paragraph)`
@@ -663,6 +666,7 @@ export const CardUserButton = styled.button`
 export const PostContainer = styled.div`
   padding: 0;
   width: 100%;
+  position: relative;
 `;
 
 export const PostImage = styled.img`
