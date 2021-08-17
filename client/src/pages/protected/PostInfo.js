@@ -26,27 +26,24 @@ function PostInfo() {
   return (
     <PostContainer>
       <ThemeProvider theme={theme}>
-        {
-          postData && (
-            <>
-              <PostImage
-                src={`/api/v1/post/photo/${postData.data._id}`}
-                alt={postData.data.body}
-              />
-              <HeaderBottomPostion
-                theme={{
-                  headerMain: "var(--secondary-color)",
-                  fontSizeXLG: "var(--font-size)",
-                  left: "5px",
-                  bottom: "60px",
-                }}
-              >
-                {postData.data.body}
-              </HeaderBottomPostion>
-            </>
-          )
-          //   {/* <h2>ID: {postData.data.body}</h2> */}
-        }
+        {postData && (
+          <>
+            <PostImage
+              src={`/api/v1/post/photo/${postData.data._id}`}
+              alt={postData.data.body}
+            />
+            <HeaderBottomPostion
+              theme={{
+                headerMain: "var(--secondary-color)",
+                fontSizeXLG: "var(--font-size)",
+                left: "5px",
+                bottom: "60px",
+              }}
+            >
+              {postData.data.body}
+            </HeaderBottomPostion>
+          </>
+        )}
       </ThemeProvider>
     </PostContainer>
   );
