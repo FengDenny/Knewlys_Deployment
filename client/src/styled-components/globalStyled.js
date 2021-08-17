@@ -718,18 +718,12 @@ export const FormImageInput = styled(FormInput)`
 
 export const FormImagePreview = styled.img`
   width: 300px;
-  height: 400px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 10px 0;
-  // to contain the image with height of 400px
-  object-fit: contain;
-`;
-
-export const FormImageBackground = styled.div`
-  border: 1px solid var(--secondary-color);
-  border-radius: 5px;
+  object-fit: cover;
 `;
 
 export const FormParagraph = styled.p`
