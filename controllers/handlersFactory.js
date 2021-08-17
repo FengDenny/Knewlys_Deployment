@@ -11,7 +11,12 @@ exports.createOne = (Model) =>
 // Read
 exports.getAll = (Model, select, populates, popSelect) =>
   CatchAsync(async (req, res, next) => {
-    let query = Model.find().select(select);
+    // sort by created newest first
+    //limit get result by 10
+    let limit = parseInt(req.query.limit, 10);
+
+    let query = Model.find().select(select).sort({ created: -1 }).limit(limit);
+    console.log(limit);
     if (populates) query = query.populate(populates, popSelect);
     const doc = await query;
     if (!doc) {
