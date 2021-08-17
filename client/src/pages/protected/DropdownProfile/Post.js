@@ -38,6 +38,7 @@ function Post() {
       photo: "",
     });
     setFileURL(null);
+    window.location.replace("/");
   };
 
   const handleChange = async (e) => {
