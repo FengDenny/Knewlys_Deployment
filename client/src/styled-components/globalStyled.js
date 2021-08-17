@@ -635,7 +635,6 @@ width:300px;
 
 // Home protected
 export const CardSection = styled.section`
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-self: center;
@@ -826,6 +825,7 @@ color: ${(props) =>
 export const Nav = styled.nav`
   position: fixed;
   width: 100%;
+  z-index: 10;
 `;
 export const NavLogo = styled(Header)`
   position: relative;
