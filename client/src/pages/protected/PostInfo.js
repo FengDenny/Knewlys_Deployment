@@ -6,6 +6,7 @@ import {
   theme,
   PostImage,
   HeaderBottomPostion,
+  Paragraph,
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 
@@ -20,7 +21,6 @@ function PostInfo() {
   const loadPostInfo = async () => {
     let response = await getPost(post);
     setPostData(response.data);
-    console.log(response.data);
   };
 
   return (
@@ -42,6 +42,18 @@ function PostInfo() {
             >
               {postData.data.body}
             </HeaderBottomPostion>
+            <Paragraph
+              theme={{
+                headerMain: "var(--secondary-color)",
+                bottom: "62px",
+                padding: "0 10px 0 0",
+                position: "absolute",
+                right: "0",
+              }}
+            >
+              {/*  grab the date before T */}
+              {postData.data.created.split("T")[0]}
+            </Paragraph>
           </>
         )}
       </ThemeProvider>
