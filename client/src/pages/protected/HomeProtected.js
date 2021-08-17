@@ -41,13 +41,14 @@ function HomeProtected() {
 
   useEffect(() => {
     loadAllPost();
+    setNoFooter(true);
+    dispatch(setFooter(noFooter));
   }, []);
 
   const loadAllPost = async () => {
     let res = await getAllPosts();
     setPost(res.data);
-    setNoFooter(true);
-    dispatch(setFooter(noFooter));
+    console.log(res.data);
   };
 
   return (
@@ -58,8 +59,7 @@ function HomeProtected() {
             theme={{
               flexDirection: "row",
               alignItems: "center",
-              height100: "60vh",
-              marginTop: "200px",
+              marginTop: "100px",
             }}
           >
             <CardGridTwo theme={{ width100: "50%" }}>
