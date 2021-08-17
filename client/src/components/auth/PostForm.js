@@ -9,7 +9,6 @@ import {
   theme,
   FormButton,
   FormButtonUpload,
-  FormImageBackground,
   FormImagePreview,
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
@@ -27,11 +26,9 @@ function PostForm({
     <FormContainer onSubmit={handleSubmit}>
       <ThemeProvider theme={theme}>
         {fileURL ? (
-          <FormImageBackground>
-            <FormGroup>
-              <FormImagePreview src={fileURL} alt='images' />
-            </FormGroup>
-          </FormImageBackground>
+          <FormGroup>
+            <FormImagePreview src={fileURL} alt='images' />
+          </FormGroup>
         ) : null}
         <FormGroup>
           <FormLabel htmlFor='body'>
