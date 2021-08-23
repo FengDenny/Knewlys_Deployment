@@ -11,11 +11,11 @@ import { ModalProvider } from "styled-react-modal";
 import Home from "./pages/cover/Home";
 import Activate from "./pages/auth/AccountActivation";
 import HomeProtected from "./pages/protected/HomeProtected";
-import UserProfile from "./pages/protected/DropdownProfile/UserProfile";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import Navbar from "./utility/Navbar/Navbar";
 import Footer from "./utility/Footer/Footer";
 import { PrivateRoute } from "./components/auth/PrivateRoute";
+import ProfileTab from "./components/tabs/ProfileTab";
 import "./account.css";
 import { useSelector } from "react-redux";
 
@@ -85,7 +85,7 @@ function App() {
                     path='/user/:userID'
                     render={(props) => (
                       <Page title={`${auth.email} profile`}>
-                        <UserProfile {...props} />
+                        <ProfileTab {...props} />
                       </Page>
                     )}
                   />
