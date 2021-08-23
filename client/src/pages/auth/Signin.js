@@ -67,13 +67,11 @@ function Signin({ setActive }) {
     await axios
       .post(url, data)
       .then((response) => {
-        console.log(response);
-        console.log("MESSAGE: ", response.data.message);
         // save user data to redux
         dispatch(setUserLoggedIn(response.data.user));
         history.push("/");
-        // window.location.replace("/test");
       })
+
       .catch((error) => {
         console.log("SIGN IN ERROR: ", error.response.data.message);
       });
