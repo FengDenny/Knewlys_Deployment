@@ -75,6 +75,7 @@ export const theme = {
   marginAuto: "auto",
   height: "30vh",
   height100: "100vh",
+  width: "0",
   width50: "50%",
   width100: "100%",
   alignSelf: "center",
@@ -92,6 +93,11 @@ export const theme = {
   display: "none",
   flexDirection: "column",
 };
+
+// Margin
+export const MarginTop = styled.div`
+  margin-top: ${(props) => props.theme.marginTop};
+`;
 
 export const Section = styled.section`
   margin-top: 200px;
@@ -140,6 +146,11 @@ export const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
+`;
+
+export const UpdateContainer = styled.div`
+  position: ${(props) => props.theme.position};
+  right: ${(props) => props.theme.right};
 `;
 
 export const MiddleFlexDisplayed = styled(motion.div)`
@@ -224,6 +235,7 @@ export const Header = styled(motion.h5)`
   color: ${(props) => props.theme.headerMain};
   font-size: ${(props) => props.theme.fontSizeXLG};
   right: ${(props) => props.theme.paragraphRight};
+  top: ${(props) => props.theme.top};
   align-self: flex-start;
   font-weight: ${(props) => props.theme.fontWeight};
   width: ${(props) => props.theme.width50};
@@ -406,7 +418,6 @@ export const CardGridTwo = styled.div`
 `;
 
 export const NavGridThree = styled(GridTwo)`
-  // create a smaller grid size for last grid
   grid-template-columns: repeat(2, 1fr) 85px;
 `;
 // Vow Section
@@ -918,6 +929,12 @@ export const HRLine = styled.hr`
   // top right bottom left
   margin: 5px 0 5px 0;
 `;
+
+export const HRLineMarginTop = styled(HRLine)`
+  margin-top: ${(props) => props.theme.marginTop};
+  width: ${(props) => props.theme.width};
+`;
+
 export const DropdownPadding = styled.div`
   padding: 8px 0 3px 0;
 `;
@@ -944,6 +961,38 @@ export const FooterLI = styled(LI)`
   top: 30px;
   // top right bottom left
   padding: 0 50px 0 0;
+`;
+
+// Tabs
+export const Tabs = styled.div`
+  overflow: hidden;
+  height: 5em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const TabDetail = styled.button`
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 2em;
+  margin-top: 2rem;
+  position: relative;
+  background: #fff;
+  font-size: 1.5em;
+  color: ${(props) => (props.active ? "var(--primary-color)" : "none")};
+  border-bottom: ${(props) =>
+    props.active ? "1px solid var(--primary-color)" : ""};
+  transition: color 0.1s ease-in-out;
+  :hover {
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+  }
+`;
+export const Content = styled.div`
+  ${(props) =>
+    props.active ? "position:absolute; margin-top:10rem" : "display:none"}
 `;
 
 // Animations
