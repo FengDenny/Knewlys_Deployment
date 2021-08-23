@@ -31,22 +31,22 @@ function UserProfile() {
         <MiddleFlexDisplayed
           theme={{
             flexDirection: "column",
-            alignItems: "center",
-            height100: "100vh",
           }}
         >
           <Header
             theme={{
               headerMain: "var(--secondary-color)",
               fontSizeXLG: "var(--font-size-lg)",
+              paragraphRight: "20px",
             }}
           >
             Email:
             <Span
               theme={{
                 headerMain: "var(--primary-color)",
-                fontSizeXLG: "var(--font-size-lg)",
+                fontSizeXLG: "var(--font-size-md)",
                 paragraphLeft: "10px",
+                fontWeight: "100",
               }}
             >
               {auth.email}
@@ -56,14 +56,17 @@ function UserProfile() {
             theme={{
               headerMain: "var(--secondary-color)",
               fontSizeXLG: "var(--font-size-lg)",
+              paragraphRight: "20px",
+              top: "10px",
             }}
           >
             Created:
             <Span
               theme={{
                 headerMain: "var(--primary-color)",
-                fontSizeXLG: "var(--font-size-lg)",
+                fontSizeXLG: "var(--font-size-md)",
                 paragraphLeft: "10px",
+                fontWeight: "100",
               }}
             >
               {beforeAt[0]}
