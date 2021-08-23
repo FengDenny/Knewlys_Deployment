@@ -101,7 +101,7 @@ exports.accountActivation = CatchAsync(async (req, res, next) => {
           return res.json({
             status: "success",
             message: `${email} has signed up successfully! Please signin.`,
-            user: newUser,
+            user: { newUser },
           });
         });
       }
@@ -313,6 +313,39 @@ exports.updateUserPassword = CatchAsync(async (req, res, next) => {
     message: "Your password has been updated.",
     token,
   });
+});
+exports.updateEmail = CatchAsync(async (req, res, next) => {
+  const { password } = req.body;
+  const user = await User.findByIdAndUpdate(req.params.userID, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
+
+  const { _id, email, createdAt } = user;
+
+  if (password) {
+    return next(
+      new AppError("Please update your password in your account setting.", 404)
+    );
+  }
+  if (!user) {
+    return next(new AppError(`No document found with that ID.`, 404));
+  } else if (user) {
+    return res.json({
+      status: "success",
+      message: `Email has been updated successfully.`,
+      user: {
+        _id,
+        email,
+        createdAt,
+        token,
+      },
+    });
+  }
 });
 
 exports.logout = (req, res) => {
