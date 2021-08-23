@@ -12,7 +12,7 @@ import {
 } from "../../styled-components/globalStyled";
 
 import { ThemeProvider } from "styled-components";
-import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
@@ -22,7 +22,6 @@ function AccountActivation({ match }) {
     token: "",
     show: true,
   });
-  const history = useHistory();
 
   useEffect(() => {
     // App.js path='/auth/activate/:token'
