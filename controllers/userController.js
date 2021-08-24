@@ -14,9 +14,23 @@ exports.userID = async (req, res, next, id) => {
     next();
   });
 };
+
 // get logged in user account info
 exports.getAccount = (req, res, next) => {
   req.params.userID = req.user.id;
+  next();
+};
+
+exports.getPostByUser = (req, res, next) => {
+  // req.auth comes from protected in authController ( userProperty: "auth")
+  let user = req.user && req.auth && req.params.userID == req.user.id;
+  console.log("req.user", req.user, "req.auth", req.auth);
+  console.log(user);
+  if (!user) {
+    return next(
+      new AppError("User is not authorized to peform this action.", 403)
+    );
+  }
   next();
 };
 
