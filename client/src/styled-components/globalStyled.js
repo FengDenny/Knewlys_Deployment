@@ -236,7 +236,7 @@ export const Header = styled(motion.h5)`
   font-size: ${(props) => props.theme.fontSizeXLG};
   right: ${(props) => props.theme.paragraphRight};
   top: ${(props) => props.theme.top};
-  align-self: flex-start;
+  align-self: ${(props) => props.theme.alignItems};
   font-weight: ${(props) => props.theme.fontWeight};
   width: ${(props) => props.theme.width50};
 
@@ -412,6 +412,21 @@ export const CardGridTwo = styled.div`
   grid-template-columns: repeat(1, minmax(0, 1fr));
   `}
   ${MediaQueries("mobileL")`
+   padding: 5px 0 0 0;
+   width:90%;
+  `}
+`;
+
+export const CardGridThree = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-column-gap: 10px;
+  width: ${(props) => props.theme.width100};
+  ${MediaQueries("laptop")`
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  `}
+  ${MediaQueries("mobileL")`
+  grid-template-columns: repeat(1, minmax(0, 1fr));
    padding: 5px 0 0 0;
    width:90%;
   `}
