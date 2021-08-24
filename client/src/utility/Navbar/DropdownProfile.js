@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyledModal, StyledCloseModal } from "../../styled-components/styled";
 import Post from "../../pages/protected/DropdownProfile/Post";
+
 function DropdownProfile({
   DropdownContent,
   NavAuthSpan,
@@ -85,7 +86,11 @@ function DropdownProfile({
       </DropdownPadding>
       <HRLine style={{ border: hrLineColor }} />
       <DropdownPadding>
-        <NavLink activeStyle={{ color: "#fff" }} exact to='/'>
+        <NavLink
+          activeStyle={{ color: "#fff" }}
+          exact
+          to={`/gallery/${userID}`}
+        >
           <FontAwesomeIcon
             icon={faHeart}
             size='1x'
