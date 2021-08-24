@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getAllPosts } from "../../api/post/postAPI";
 import {
   Container,
@@ -23,7 +23,6 @@ import { Card } from "../../styled-components/styled.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { setFooter } from "../../redux/actions/footerAction";
 import { setPostID } from "../../redux/actions/postAction";
 import PostInfo from "./PostInfo";
@@ -59,7 +58,7 @@ function HomeProtected() {
             theme={{
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "100px",
+              marginTop: "20vh",
             }}
           >
             <CardGridTwo theme={{ width100: "50%" }}>
