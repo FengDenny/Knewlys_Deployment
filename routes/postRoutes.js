@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { userID, getAccount } = require("./../controllers/userController");
+const { userID, getPostByUser } = require("./../controllers/userController");
 const {
   postByID,
   createPost,
@@ -36,14 +36,18 @@ router.get("/post/:postID", getSinglePost);
 // Protect all routes after this middleware
 router.use(protect);
 
-// @desc Create post
+// @desc Get post by userID
+// @route POST /api/v1/post/by/:userID
+// @access Private
+
+router.route("/post/by/:userID").get(protected, getPostByUser, getUserPost);
+// @desc Create post by userID
 // @route POST /api/v1/post/:userID
 // @access Private
 // For formidable package, function should be first before the validator
 router
   .route("/post/:userID")
-  .post(createPost, createPostValidator, runValidationResult)
-  .get(getUserPost);
+  .post(createPost, createPostValidator, runValidationResult);
 
 // @desc Delete/ Update post
 // @route DELETE/PATCH  /api/v1/post/:postID
