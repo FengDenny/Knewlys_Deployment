@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserLoggedOut } from "../../redux/actions/authAction";
 import { ThemeProvider } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   openModal,
@@ -55,8 +54,9 @@ library.add(
 );
 
 function Navbar() {
+  // react-redux
   const { auth } = useSelector((state) => ({ ...state }));
-
+  const userID = auth._id;
   // modal
   const [modalOpen, setModalOpen] = useState(false);
   const [active, setActive] = useState("post");
@@ -73,7 +73,6 @@ function Navbar() {
   const firstLetterEmail = auth.email.toUpperCase().split("");
   const beforeAt = auth.email.split("@");
   const dispatch = useDispatch();
-  const userID = auth._id;
 
   // navbar scroll eventHandler
   const listenToScrollEvent = () => {
@@ -120,7 +119,7 @@ function Navbar() {
                 <NavLink
                   activeStyle={{ borderBottom: "1px solid #fff" }}
                   exact
-                  to='#'
+                  to='/'
                   style={{ color: navLinkColor }}
                 >
                   Gallery
