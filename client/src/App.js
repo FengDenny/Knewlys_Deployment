@@ -11,6 +11,7 @@ import { ModalProvider } from "styled-react-modal";
 import Home from "./pages/cover/Home";
 import Activate from "./pages/auth/AccountActivation";
 import HomeProtected from "./pages/protected/HomeProtected";
+import UserGalleryInfo from "./pages/protected/Gallery/UserGalleryInfo";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import Navbar from "./utility/Navbar/Navbar";
 import Footer from "./utility/Footer/Footer";
@@ -86,6 +87,15 @@ function App() {
                     render={(props) => (
                       <Page title={`${auth.email} profile`}>
                         <ProfileTab {...props} />
+                      </Page>
+                    )}
+                  />
+                  <PrivateRoute
+                    exact
+                    path='/gallery/:userID'
+                    render={(props) => (
+                      <Page title={`${auth.email} gallery`}>
+                        <UserGalleryInfo {...props} />
                       </Page>
                     )}
                   />
