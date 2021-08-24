@@ -42,10 +42,21 @@ function PostInfo() {
             >
               {postData.data.body}
             </HeaderBottomPostion>
+            <HeaderBottomPostion
+              theme={{
+                headerMain: "var(--secondary-color)",
+                fontSizeXLG: "var(--font-size-xsm)",
+                fontWeight: "100",
+                left: "5px",
+                bottom: "55px",
+              }}
+            >
+              {postData.data.postedBy.email}
+            </HeaderBottomPostion>
             <Paragraph
               theme={{
                 headerMain: "var(--secondary-color)",
-                bottom: "62px",
+                bottom: "80px",
                 padding: "0 10px 0 0",
                 position: "absolute",
                 right: "0",
