@@ -77,8 +77,8 @@ exports.createPost = CatchAsync(async (req, res, next) => {
 
 exports.getUserPost = CatchAsync(async (req, res, next) => {
   await Post.find({ postedBy: req.profile._id })
-    .populate("postedBy", "_id email")
-    .select("_id title body created")
+    .populate("postedBy", "_id email createdAt")
+    .select("_id title body created photo.contentType")
     .sort("_created")
     .exec((err, post) => {
       if (err) {
