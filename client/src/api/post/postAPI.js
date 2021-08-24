@@ -12,3 +12,8 @@ export const getAllPosts = async () => await axios.get(`/api/v1/post`);
 
 export const getPost = async (postID) =>
   await axios.get(`/api/v1/post/${postID}`);
+
+export const getPostByUser = async (token, userID) =>
+  await axios.get(`/api/v1/post/by/${userID}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
