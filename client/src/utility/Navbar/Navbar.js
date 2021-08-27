@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DropdownProfile from "./DropdownProfile";
 import DropdownWedding from "./DropdownWedding";
 import { NavLink } from "react-router-dom";
@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserLoggedOut } from "../../redux/actions/authAction";
 import { ThemeProvider } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BurgerMenu from "./Burger/BurgerMenu";
+import NavBurger from "./Burger/NavBurger";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   openModal,
@@ -15,16 +17,16 @@ import {
 } from "../../components/modal/modal";
 import {
   Container,
-  NavGridThree,
+  NavGridTwo,
   theme,
   Nav,
   NavLogo,
   LI,
-  UL,
+  BurgerUL,
   NavAuthUL,
   NavAuthAccount,
   NavAuth,
-  Dropdown,
+  WeddingDropdown,
   DropdownContent,
   NavAuthSpan,
   DropdownPadding,
@@ -32,6 +34,7 @@ import {
   HRLine,
   Cursor,
   DropdownButton,
+  ProfileDropdown,
 } from "../../styled-components/globalStyled";
 import {
   faUser,
@@ -62,9 +65,13 @@ function Navbar() {
   const [active, setActive] = useState("post");
   const [opacity, setOpacity] = useState(0);
 
+  // Nav Burger
+  const [open, setOpen] = useState(false);
+  const node = useRef();
+
   // scrollevent
   const [navSize, setNavSize] = useState("8rem");
-  const [navbarColor, setNavbarColor] = useState("transparent");
+  const [navbarColor, setNavbarColor] = useState("var(--hamburger-menu-color)");
   const [navLinkColor, setNavLinkColor] = useState("var(--primary-color)");
   const [navAuthBorderColor, setNavAuthBorderColor] = useState(
     "1px solid var(--primary-color)"
@@ -78,7 +85,7 @@ function Navbar() {
   const listenToScrollEvent = () => {
     window.scrollY >= 80
       ? setNavbarColor("var(--primary-color)")
-      : setNavbarColor("transparent");
+      : setNavbarColor("var(--hamburger-menu-color)");
     window.scrollY >= 80 ? setNavSize("5rem") : setNavSize("8rem");
     window.scrollY >= 80
       ? setNavLinkColor("var(--white-color)")
@@ -108,80 +115,60 @@ function Navbar() {
         transition: "all 1s",
       }}
     >
-      <Container>
+      <Container ref={node}>
         <ThemeProvider theme={theme}>
-          <NavGridThree>
+          <NavGridTwo>
             <NavLogo theme={{ fontSizeXLG: " var(--font-size-24)" }}>
               Knewlys
             </NavLogo>
-            <UL>
-              <LI theme={{ fontSizeXLG: "var(--font-size-sm)" }}>
-                <NavLink
-                  activeStyle={{ borderBottom: "1px solid #fff" }}
-                  exact
-                  to='/'
-                  style={{ color: navLinkColor }}
-                >
-                  Gallery
-                </NavLink>
-              </LI>
-              <Dropdown>
-                <Cursor>
-                  <LI theme={{ fontSizeXLG: "var(--font-size-sm)" }}>
-                    Weddings
-                  </LI>
-                </Cursor>
+            <NavBurger open={open} setOpen={setOpen} />
 
-                <DropdownWedding
-                  DropdownContent={DropdownContent}
-                  NavAuthSpan={NavAuthSpan}
-                  DropdownPadding={DropdownPadding}
-                  HRLine={HRLine}
-                  faCalendarCheck={faCalendarCheck}
-                  faCalendarAlt={faCalendarAlt}
-                  faMapMarkerAlt={faMapMarkerAlt}
-                  FontAwesomeIcon={FontAwesomeIcon}
-                  NavLink={NavLink}
-                />
-              </Dropdown>
-            </UL>
-            <Dropdown>
-              <NavAuthUL>
-                <NavAuth style={{ border: navAuthBorderColor }}>
-                  <NavAuthAccount theme={{ justifyContent: "center" }}>
-                    {firstLetterEmail[0]}
-                  </NavAuthAccount>
-                </NavAuth>
-              </NavAuthUL>
-              <DropdownProfile
-                DropdownContent={DropdownContent}
-                NavAuthSpan={NavAuthSpan}
-                DropdownPadding={DropdownPadding}
-                NavLogoutBtn={NavLogoutBtn}
-                HRLine={HRLine}
-                faUser={faUser}
-                faHeart={faHeart}
-                setModalOpen={setModalOpen}
-                setOpacity={setOpacity}
-                faPlusSquare={faPlusSquare}
-                faSignOutAlt={faSignOutAlt}
-                beforeAt={beforeAt}
-                logout={logout}
-                FontAwesomeIcon={FontAwesomeIcon}
-                NavLink={NavLink}
-                DropdownButton={DropdownButton}
-                openModal={openModal}
-                setActive={setActive}
-                modalOpen={modalOpen}
-                active={active}
-                opacity={opacity}
-                closeModal={closeModal}
-                afterOpen={afterOpen}
-                beforeClose={beforeClose}
-                userID={userID}
-              />
-            </Dropdown>
-          </NavGridThree>
+            <BurgerMenu
+              open={open}
+              setOpen={setOpen}
+              DropdownContent={DropdownContent}
+              NavAuthSpan={NavAuthSpan}
+              DropdownPadding={DropdownPadding}
+              NavLogoutBtn={NavLogoutBtn}
+              HRLine={HRLine}
+              faUser={faUser}
+              faHeart={faHeart}
+              setModalOpen={setModalOpen}
+              setOpacity={setOpacity}
+              faPlusSquare={faPlusSquare}
+              faSignOutAlt={faSignOutAlt}
+              beforeAt={beforeAt}
+              logout={logout}
+              FontAwesomeIcon={FontAwesomeIcon}
+              NavLink={NavLink}
+              DropdownButton={DropdownButton}
+              openModal={openModal}
+              setActive={setActive}
+              modalOpen={modalOpen}
+              active={active}
+              opacity={opacity}
+              closeModal={closeModal}
+              afterOpen={afterOpen}
+              beforeClose={beforeClose}
+              userID={userID}
+              navLinkColor={navLinkColor}
+              WeddingDropdown={WeddingDropdown}
+              DropdownWedding={DropdownWedding}
+              BurgerUL={BurgerUL}
+              LI={LI}
+              Cursor={Cursor}
+              faCalendarCheck={faCalendarCheck}
+              faCalendarAlt={faCalendarAlt}
+              faMapMarkerAlt={faMapMarkerAlt}
+              navAuthBorderColor={navAuthBorderColor}
+              NavAuthUL={NavAuthUL}
+              NavAuth={NavAuth}
+              NavAuthAccount={NavAuthAccount}
+              firstLetterEmail={firstLetterEmail}
+              DropdownProfile={DropdownProfile}
+              ProfileDropdown={ProfileDropdown}
+            />
+          </NavGridTwo>
         </ThemeProvider>
       </Container>
     </Nav>
