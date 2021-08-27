@@ -26,7 +26,9 @@ function DropdownWedding({
     window.scrollY >= 80
       ? setBackgroundColor("var(--primary-color)")
       : setBackgroundColor("transparent");
-    setNavWedBorderColor("2px solid var(--primary-color)");
+    window.scrollY >= 80
+      ? setNavWedBorderColor("2px solid var(--white-color)")
+      : setNavWedBorderColor("2px solid var(--primary-color)");
 
     window.scrollY >= 80
       ? sethrLineColor("1px solid var(--white-color)")
