@@ -30,7 +30,7 @@ function DropdownProfile({
   userID,
 }) {
   // scroll events
-  const [backgroundColor, setBackgroundColor] = useState("transparent");
+  const [backgroundColor, setBackgroundColor] = useState("#fff");
   const [hrLineColor, sethrLineColor] = useState(
     "1px solid var(--primary-color)"
   );
@@ -47,8 +47,11 @@ function DropdownProfile({
   const listenToScrollEvent = () => {
     window.scrollY >= 80
       ? setBackgroundColor("var(--primary-color)")
-      : setBackgroundColor("transparent");
-    setNavAuthBorderColor("2px solid var(--primary-color)");
+      : setBackgroundColor("#fff");
+
+    window.scrollY >= 80
+      ? setNavAuthBorderColor("2px solid var(--white-color)")
+      : setNavAuthBorderColor("2px solid var(--primary-color)");
 
     window.scrollY >= 80
       ? sethrLineColor("1px solid var(--white-color)")
