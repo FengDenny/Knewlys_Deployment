@@ -17,6 +17,10 @@ body {
   background:var(--white-color);
  
 }
+// for nav burger menu
+body{
+overflow-x:hidden;
+}
 
 a {
     list-style-type: none;
@@ -25,11 +29,12 @@ a {
 :root{
   --primary-font: 'Work Sans', sans-serif;
   --primary-color: #e04f72;
+  --hamburger-menu-color: #F8F8F8;
   --border-color-dark:#bb002d;
   --gradient-primary: linear-gradient(to right, #e04f72, #D1234C);
   --gradient-hover: linear-gradient(to top, #e04f72, #D1234C);
   --secondary-color: #4A5961;
-  --secondary-color-hover: #3A464D;setNavLinkColor("var(--white-color)")
+  --secondary-color-hover: #3A464D;
   --form-label-color: #94A3B1;
   --form-label-white-gray-color: #DADADA;
   --form-button-submit: #00c04d;
@@ -432,8 +437,8 @@ export const CardGridThree = styled.div`
   `}
 `;
 
-export const NavGridThree = styled(GridTwo)`
-  grid-template-columns: repeat(2, 1fr) 85px;
+export const NavGridTwo = styled(GridTwo)`
+  grid-template-columns: repeat(2, 1fr) 50%;
 `;
 // Vow Section
 export const VowsSection = styled(motion.section)`
@@ -844,8 +849,74 @@ color: ${(props) =>
         props.green ? "2px solid var(--form-button-submit-hover)" : "none"}
 `;
 
-// Navbar
+// Nav hamburger
+export const StyledBurger = styled.button`
+  position: absolute;
+  top: 10%;
+  right: 2rem;
+  display: none;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  &:focus {
+    outline: none;
+  }
 
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    :first-child {
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+    }
+
+    :nth-child(2) {
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
+    }
+
+    :nth-child(3) {
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
+    }
+  }
+  ${MediaQueries("laptop")`
+  display: flex;
+  flex-direction: column;
+`}
+`;
+
+export const StyledMenu = styled.nav`
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  transition: transform 0.3s ease-in-out;
+  ${MediaQueries("laptop")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width:30%;
+  
+`}
+  ${MediaQueries("tablet")`
+  width:100%;
+ 
+  
+`}
+`;
+
+// Navbar
 export const Nav = styled.nav`
   position: fixed;
   width: 100%;
@@ -855,6 +926,11 @@ export const NavLogo = styled(Header)`
   position: relative;
   bottom: 4px;
 `;
+export const NavMobile = styled.nav`
+  ${MediaQueries("laptop")`
+display:none;
+`}
+`;
 
 export const UL = styled.ul`
   display: flex;
@@ -862,20 +938,47 @@ export const UL = styled.ul`
   list-style: none;
 `;
 
+export const BurgerUL = styled(UL)`
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  ${MediaQueries("laptop")`
+  flex-direction: column;
+  align-self: center;
+  font-size:2rem;
+`}
+`;
+
 export const NavAuthUL = styled(UL)`
   justify-content: ${(props) => props.theme.justifyContent};
   position: relative;
-  bottom: 8px;
+  bottom: 28px;
+  right: 10%;
+  ${MediaQueries("laptop")`
+  flex-direction: column;
+  bottom: 100px;
+`}
+  ${MediaQueries("tablet")`
+  flex-direction: column;
+  bottom: 100px;
+`}
 `;
 
 export const LI = styled.li`
   font-size: ${(props) => props.theme.fontSizeXLG};
   // top right bottom left
-  padding: 0 55px 0 14px;
+  padding: 0 100px 0 0px;
   a {
     text-decoration: none;
     color: var(--white-color);
   }
+  ${MediaQueries("laptop")`
+  padding: 31px 43px 4px 18px;
+  font-size:2rem;
+  `}
+  ${MediaQueries("tablet")`
+  font-size:2.5rem;
+  `}
 `;
 
 export const Cursor = styled(UL)`
@@ -889,11 +992,21 @@ export const NavAuth = styled.li`
   border-radius: 50%;
   align-self: flex-end;
   cursor: pointer;
+
+  ${MediaQueries("laptop")`
+  height: 45px;
+  width: 45px;
+  `}
 `;
 export const NavAuthAccount = styled.h2`
   display: flex;
   justify-content: ${(props) => props.theme.justifyContent};
   margin-top: 3px;
+
+  ${MediaQueries("laptop")`
+  margin-topL:9px;
+  font-size:2rem;
+  `}
 `;
 export const NavAuthSpan = styled.span`
   padding: 0 0 0 10px;
@@ -906,7 +1019,7 @@ export const NavLogoutBtn = styled.button`
   color: var(--white-color);
   background: none;
   cursor: pointer;
-  box-shadow: var(--box-shadow-light);
+  box-shadow: var(--box-shadow-light);LI
   // &:hover {
   //   background: var(--white-color);
   //   color: var(--primary-color);
@@ -914,10 +1027,8 @@ export const NavLogoutBtn = styled.button`
 `;
 
 // Navbar dropdown
-
-export const Dropdown = styled.div`
+export const WeddingDropdown = styled.div`
   position: relative;
-  display: inline-block;
   &:hover {
     display: block;
     > div {
@@ -926,6 +1037,27 @@ export const Dropdown = styled.div`
       right: 0;
     }
   }
+`;
+export const ProfileDropdown = styled.div`
+  position: absolute;
+  right: -70%;
+  &:hover {
+    display: block;
+    > div {
+      display: block;
+      right: 10%;
+    }
+  }
+
+  ${MediaQueries("laptop")`
+  right: 50%;
+  &:hover{
+    >div{
+      right: -104px;
+      top: -40px;
+    }
+  }
+`}
 `;
 export const DropdownContent = styled.div`
   display: none;
@@ -937,6 +1069,10 @@ export const DropdownContent = styled.div`
   z-index: 1;
   border-radius: 2px;
   border: 1px solid var(--white-color);
+
+  ${MediaQueries("laptop")`
+  font-size:1rem;
+  `}
 `;
 export const HRLine = styled.hr`
   border: 1px solid ${(props) => props.theme.headerMain};
