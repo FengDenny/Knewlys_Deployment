@@ -71,6 +71,7 @@ export const theme = {
   buttonWidth: "334px",
   gridTempRow: "35px",
   formLabelColor: "var(--form-label-color)",
+  formBackgroundColor: "none",
   color: "#fff",
   paragraphRight: " 5px;",
   paragraphLeft: "5px",
@@ -98,7 +99,18 @@ export const theme = {
   display: "none",
   flexDirection: "column",
 };
-
+// Error
+export const Error = styled.p`
+  font-size: var(--font-size);
+  position: relative;
+  left: ${(props) => props.theme.left};
+  bottom: ${(props) => props.theme.bottom};
+  text-align: ${(props) => props.theme.alignSelf};
+  color: ${(props) => props.theme.color};
+`;
+export const Banner = styled.div`
+  background-color: var(--primary-color);
+`;
 // Margin
 export const MarginTop = styled.div`
   margin-top: ${(props) => props.theme.marginTop};
@@ -727,6 +739,11 @@ export const FormLabel = styled.label`
   font-family: var(--primary-font);
   padding: 14px 0 0 0;
   color: ${(props) => props.theme.formLabelColor};
+  background-color: ${(props) => props.theme.formBackgroundColor};
+  width: ${(props) => props.theme.width};
+  position: relative;
+  bottom: ${(props) => props.theme.bottom};
+  right: ${(props) => props.theme.right};
 `;
 
 export const FormInput = styled.input`
