@@ -16,10 +16,11 @@ function Signin({ setActive }) {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+  const [showBanner, setShowBanner] = useState(false);
+  const [bannerError, setBannerError] = useState("");
   const dispatch = useDispatch();
 
   const history = useHistory();
-
   const firstRender = useRef(true);
 
   useEffect(() => {
@@ -73,7 +74,11 @@ function Signin({ setActive }) {
       })
 
       .catch((error) => {
-        console.log("SIGN IN ERROR: ", error.response.data.message);
+        const authError = error.response.data.message;
+        console.log(authError);
+        setBannerError(authError);
+        setShowBanner(true);
+        console.log(showBanner);
       });
   };
 
@@ -92,6 +97,8 @@ function Signin({ setActive }) {
           emailError={emailError}
           passwordError={passwordError}
           setActive={setActive}
+          bannerError={bannerError}
+          showBanner={showBanner}
         />
       </ThemeProvider>
     </Container>
