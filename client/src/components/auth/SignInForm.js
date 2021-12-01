@@ -13,6 +13,8 @@ import {
   FormButton,
   FormSwitch,
   FormLinkSwitch,
+  Error,
+  Banner,
 } from "../../styled-components/globalStyled";
 import { ThemeProvider } from "styled-components";
 
@@ -25,11 +27,32 @@ function SignInForm({
   setPassword,
   passwordError,
   setActive,
+  showBanner,
+  bannerError,
 }) {
   const { switchToSignup, switchToForgotPassword } = useContext(AccountContext);
   return (
     <FormContainer onSubmit={handleSubmit}>
       <ThemeProvider theme={theme}>
+        <FormGroup>
+          {showBanner ? (
+            <FormLabel
+              theme={{
+                formBackgroundColor: "red",
+                // width: "450px",
+                bottom: "85px",
+                right: " 73px",
+                width: "144%",
+              }}
+            >
+              <Error
+                theme={{ alignSelf: "center", bottom: "7px", color: "#fff" }}
+              >
+                {bannerError}
+              </Error>
+            </FormLabel>
+          ) : null}
+        </FormGroup>
         <FormGroup>
           <FormLabel htmlFor='email'>Email Address</FormLabel>
           <FormInput
